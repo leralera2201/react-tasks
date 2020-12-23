@@ -65,16 +65,21 @@ class FormPage extends Component {
     const { name, value } = event.target;
     const errors = this.validateField(name, value);
     const { fields } = this.state;
-    fields[name] = { ...this.state.fields[name], value, dirty: true, errors };
+    fields[name] = { ...fields[name], value, dirty: true, errors };
 
     this.setState({ fields });
   };
 
   validateField = (name, value) => {
     const { validators } = { ...this.state.fields[name] };
-    let errors = validators.map((validator) => validator(value));
+    const errors = validators.reduce((errorsArray, validator) => {
+      const error = validator(value);
+      if(error) {
+        errorsArray.push(error);
+      }
+      return errorsArray;
+    }, [])
     this.validateConfirmPassword(name, value, errors);
-    errors = errors.filter((error) => error !== null);
 
     return errors;
   };
@@ -94,7 +99,7 @@ class FormPage extends Component {
   focusHandler = (event) => {
     const { name } = event.target;
     const { fields } = this.state;
-    fields[name] = { ...this.state.fields[name], focused: true };
+    fields[name] = { ...fields[name], focused: true };
 
     this.setState({ fields });
   };
@@ -103,17 +108,17 @@ class FormPage extends Component {
     const { name, value } = event.target;
     const { fields } = this.state;
     const errors = this.validateField(name, value);
-    fields[name] = { ...this.state.fields[name], focused: false, errors };
+    fields[name] = { ...fields[name], focused: false, errors };
 
     this.setState({ fields });
   };
 
   validateBeforeSubmit = () => {
-    Object.entries(this.state.fields).forEach(([fieldName, field]) => {
+    const { fields } = this.state;
+    Object.entries(fields).forEach(([fieldName, field]) => {
       if (!field.dirty) {
         const errors = this.validateField(fieldName, field.value);
-        const { fields } = this.state;
-        fields[fieldName] = { ...this.state.fields[fieldName], errors };
+        fields[fieldName] = { ...fields[fieldName], errors };
         this.setState({ fields });
       }
     });

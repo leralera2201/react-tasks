@@ -1,6 +1,7 @@
 import React from 'react';
-import { FormFeedback, FormGroup, Input, Label } from 'reactstrap';
+import { FormGroup, Input, Label } from 'reactstrap';
 import PropTypes from 'prop-types';
+import Errors from "../Errors";
 
 const Field = ({ label, name, data: { errors, focused }, ...otherProps }) => {
   return (
@@ -14,10 +15,7 @@ const Field = ({ label, name, data: { errors, focused }, ...otherProps }) => {
         {...otherProps}
       />
       {!focused &&
-        errors.length > 0 &&
-        errors.map((error, index) => (
-          <FormFeedback key={`error-key-${index}`}>{error}</FormFeedback>
-        ))}
+        errors.length > 0 && <Errors errors={errors}/> }
     </FormGroup>
   );
 };
