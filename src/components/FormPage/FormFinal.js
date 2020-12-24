@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Form } from 'react-final-form';
-import validators from '../../utils/validator';
-import FormField from '../Field';
 import { Button } from 'reactstrap';
+
+import validators from '../../utils/validator';
+
+import FormField from '../Field';
 
 class FormFinal extends Component {
   constructor(props) {
@@ -58,7 +60,7 @@ class FormFinal extends Component {
         },
       },
     };
-  }
+  };
 
   onSubmit = () => {
     Object.values(this.state.fields).forEach(({ label, value }) =>
@@ -66,32 +68,35 @@ class FormFinal extends Component {
     );
   };
 
+  validate = (values) => {
+    const errors = {};
+    const { fields } = this.state;
+
+    Object.keys(fields).forEach((fieldName) => {
+      errors[fieldName] = [];
+      fields[fieldName].validators.reduce((errorsArray, validator) => {
+        const error = validator(values[fieldName] || '');
+        if (error) {
+          errorsArray.push(error);
+        }
+        return errorsArray;
+      }, errors[fieldName]);
+
+      if(errors[fieldName].length === 0) {
+        delete errors[fieldName]
+      }
+    });
+
+    return errors;
+  };
+
   render() {
     const { fields } = this.state;
     return (
       <Form
         onSubmit={this.onSubmit}
-        validate={(values) => {
-          const errors = {};
-
-          Object.keys(fields).forEach((fieldName) => {
-            errors[fieldName] = [];
-            fields[fieldName].validators.reduce((errorsArray, validator) => {
-              const error = validator(values[fieldName] || '');
-              if (error) {
-                errorsArray.push(error);
-              }
-              return errorsArray;
-            }, errors[fieldName]);
-
-            if(errors[fieldName].length === 0) {
-              delete errors[fieldName]
-            }
-          });
-
-          return errors;
-        }}
-        render={({ handleSubmit, form, submitting, pristine, values }) => (
+        validate={this.validate}
+        render={({ handleSubmit, form, submitting }) => (
           <form onSubmit={handleSubmit} className={'form'}>
             {Object.entries(fields).map(([fieldName, field]) => (
               <FormField

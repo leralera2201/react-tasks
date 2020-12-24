@@ -7,7 +7,9 @@ import Errors from "../Errors";
 const FormField = ({ label, name, type }) => {
   return (
     <Field name={name}>
-      {({ input, meta }) => (
+      {({ input, meta: {
+          invalid, active, error, submitFailed, visited
+      }}) => (
         <FormGroup>
           <Label htmlFor={name}>{label}</Label>
           <Input
@@ -16,10 +18,10 @@ const FormField = ({ label, name, type }) => {
             placeholder={label}
             name={name}
             type={type}
-            invalid={meta.invalid && !meta.active && (meta.submitFailed || meta.visited)}
+            invalid={invalid && !active && (submitFailed || visited)}
           />
-          {meta.invalid && !meta.active && (meta.submitFailed || meta.visited) &&
-              <Errors errors={Object.values(meta.error)} />
+          {invalid && !active && (submitFailed || visited) &&
+              <Errors errors={Object.values(error)} />
           }
         </FormGroup>
       )}
