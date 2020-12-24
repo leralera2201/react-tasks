@@ -28,10 +28,7 @@ function map(fn, array) {
 
 function fmap(a, gen) {
     return function(){
-        let arrArgs = []
-        for(let i = 0; i < arguments.length; i++) {
-            arrArgs.push(arguments[i])
-        }
+        let arrArgs = [].slice.call(arguments, 0)
         return a(gen.apply(null, arrArgs))
     }
 }
@@ -39,16 +36,9 @@ function fmap(a, gen) {
 
 function partial() {
     let fn = arguments[0]
-    let arrArgs = []
-    for(let i = 1; i < arguments.length; i++) {
-        arrArgs.push(arguments[i])
-    }
+    let arrArgs = [].slice.call(arguments, 1)
     return function(){
-
-        let arrInnerArgs = []
-        for(let i = 0; i < arguments.length; i++) {
-            arrInnerArgs.push(arguments[i])
-        }
+        let arrInnerArgs = [].slice.call(arguments, 0)
         return fn.apply(null, arrArgs.concat(arrInnerArgs))
 
     }
@@ -57,16 +47,10 @@ function partial() {
 
 function partialAny() {
     let fn = arguments[0]
-    let arrArgs = []
-    for(let i = 1; i < arguments.length; i++) {
-        arrArgs.push(arguments[i])
-    }
+    let arrArgs = [].slice.call(arguments, 1)
     return function(){
         let arrArgsCopy = arrArgs.slice()
-        let arrInnerArgs = []
-        for(let i = 0; i < arguments.length; i++) {
-            arrInnerArgs.push(arguments[i])
-        }
+        let arrInnerArgs = [].slice.call(arguments, 0)
         let otherArgs = []
         let k = 0
         for(let i = 0; i < arrArgsCopy.length; i++){
@@ -86,16 +70,9 @@ function partialAny() {
 
 
 function bind(fn, context) {
-    let arrArgs = []
-    for(let i = 2; i < arguments.length; i++) {
-        arrArgs.push(arguments[i])
-    }
+    let arrArgs = [].slice.call(arguments, 2)
     return function() {
-        let arrInnerArgs = []
-        for(let i = 0; i < arguments.length; i++) {
-            arrInnerArgs.push(arguments[i])
-        }
-
+        let arrInnerArgs = [].slice.call(arguments, 0)
         return fn.apply(context, arrArgs.concat(arrInnerArgs));
     };
 }
