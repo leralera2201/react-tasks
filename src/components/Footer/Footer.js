@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <Navbar color="dark" dark expand="md" className={"flex-center h50"}>
+    <Navbar color="dark" dark expand="md" className="flex-center h50">
       <Link to={"/"}>
-        <NavbarBrand className={"fz30"}>Blog</NavbarBrand>
+        <NavbarBrand className="fz30">Blog</NavbarBrand>
       </Link>
     </Navbar>
   );

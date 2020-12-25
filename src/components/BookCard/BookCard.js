@@ -10,13 +10,13 @@ const BookCard = ({ book: { title, description, id } }) => {
   };
 
   return (
-    <Card className={"card-width"}>
+    <Card className="card-width">
       <CardBody>
         <CardTitle tag="h3">{title}</CardTitle>
         <CardSubtitle tag="h6" className="mb-2 text-muted mt-3">
           {description}
         </CardSubtitle>
-        <Button onClick={goToDetail} className={"mt-3"}>
+        <Button onClick={goToDetail} className="mt-3">
           Go to detail
         </Button>
       </CardBody>

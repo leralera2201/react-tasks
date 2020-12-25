@@ -2,7 +2,9 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 
 import { Footer, Header } from "./components";
-import { Book, Books, Home } from "./pages";
+import Home from "./pages/Home";
+import Books from "./pages/Books";
+import Book from "./pages/Book";
 
 function App() {
   return (

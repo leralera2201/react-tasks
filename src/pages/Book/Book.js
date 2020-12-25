@@ -1,30 +1,35 @@
 import React, { Component } from "react";
 import { Card, CardBody, CardSubtitle, CardText, CardTitle } from "reactstrap";
 import { connect } from "react-redux";
-import { formatDistance } from "date-fns";
+import moment from "moment";
 
-import { getBook } from "../../store/actions/book.actions";
 import { Loader, Error } from "../../components";
 
-class Book extends Component {
-  constructor(props) {
-    super(props);
-  }
+import { getBook } from "./actions/book.actions";
+import {
+  bookErrorSelector,
+  bookItemSelector,
+  bookLoadingSelector,
+} from "./selectors";
 
+class Book extends Component {
   componentDidMount() {
-    this.props.getBook(this.props.match.params.id);
+    const {
+      getBookById,
+      match: {
+        params: { id },
+      },
+    } = this.props;
+    getBookById(id);
   }
 
   render() {
-    const { loading, book, error } = this.props.books;
+    const { loading, book, error } = this.props;
 
     return (
-      <div className={"container pt-5"}>
-        {loading ? (
-          <Loader />
-        ) : error ? (
-          <Error error={error} />
-        ) : book ? (
+      <div className="container pt-5">
+        {loading && <Loader />}
+        {!loading && !error && book && (
           <Card>
             <CardBody>
               <CardTitle tag="h3">{book.title}</CardTitle>
@@ -32,24 +37,30 @@ class Book extends Component {
                 {book.description}
               </CardSubtitle>
               <CardText>{book.excerpt}</CardText>
-              <CardText tag={"h5"}>Page count: {book.pageCount}</CardText>
+              <CardText tag="h5">Page count: {book.pageCount}</CardText>
               <CardText>
                 <small className="text-muted">
-                  {formatDistance(new Date(), new Date(book.publishDate))}
+                  {moment(book.publishDate).fromNow()}
                 </small>
               </CardText>
             </CardBody>
           </Card>
-        ) : (
-          <div>No such book</div>
         )}
+        {!error && !loading && !book && <div>No book</div>}
+        {error && <Error error={error} />}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  books: state.books,
+  book: bookItemSelector(state),
+  loading: bookLoadingSelector(state),
+  error: bookErrorSelector(state),
 });
 
-export default connect(mapStateToProps, { getBook })(Book);
+const mapDispatchToProps = (dispatch) => ({
+  getBookById: (id) => dispatch(getBook(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Book);

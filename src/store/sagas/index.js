@@ -1,8 +1,9 @@
-import { all } from "redux-saga/effects";
-import { booksWatcher } from "./books.sagas";
-import { bookWatcher } from "./book.sagas";
+import { fork } from "redux-saga/effects";
+
+import { booksWatcher } from "../../pages/Books/sagas/books.sagas";
+import { bookWatcher } from "../../pages/Book/sagas/book.sagas";
 
 export default function* allSagas() {
-  // TODO: Watch saga DOC about sagas run
-  yield all([booksWatcher(), bookWatcher()]);
+  yield fork(booksWatcher);
+  yield fork(bookWatcher);
 }
