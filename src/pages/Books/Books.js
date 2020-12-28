@@ -3,20 +3,30 @@ import { connect } from "react-redux";
 
 import { Loader, BookCard, BooksPagination, Error } from "../../components";
 
-import { getBooks, paginateBooks } from "./actions/books.actions";
+import {fetchBooksStart, paginateBooks} from "./actions/books.actions";
 import {
-  bookItemsSelector,
-  booksErrorSelector,
-  booksLoadingSelector,
-  booksPerPageSelector,
-  currentBookItemsSelector,
-  currentPageSelector,
-} from "./selectors";
+  booksFetchErrorSelector,
+  booksFetchIsStatusInProgress,
+  booksFetchItemsSelector,
+  booksFetchCurrentPageSelector,
+  booksFetchBooksPerPagePageSelector,
+  booksFetchCurrentItemsSelector
+} from "./selectors/books.selectors";
+import {Button} from "reactstrap";
 
 class Books extends Component {
   componentDidMount() {
-    const { getAllBooks } = this.props;
+    const { getAllBooks, paginate, location: {state} } = this.props;
+    if(state && state.withoutFetch) {
+      paginate()
+      return
+    }
     getAllBooks();
+  }
+
+  createBook = () => {
+    const { history } = this.props;
+    history.push('/books/create')
   }
 
   render() {
@@ -40,39 +50,44 @@ class Books extends Component {
 
     return (
       <div className="pt-5">
+        <div className="container">
+          <Button onClick={this.createBook}>
+            Create book
+          </Button>
         {loading && <Loader />}
         {!loading && !error && currentBooks.length > 0 && (
-          <div className="container">
-            <div className="flex-space-between">
-              {currentBooks.map((book) => (
-                <BookCard book={book} key={book.id} />
-              ))}
-            </div>
-            <BooksPagination
-              currentPage={currentPage}
-              paginate={paginate}
-              pages={pages}
-            />
-          </div>
+            <>
+              <div className="flex-space-between">
+                {currentBooks.map((book) => (
+                  <BookCard book={book} key={book.id} />
+                ))}
+              </div>
+              <BooksPagination
+                currentPage={currentPage}
+                onPaginate={paginate}
+                pages={pages}
+              />
+            </>
         )}
         {!error && !loading && booksLength === 0 && <div>No books</div>}
         {error && <Error error={error} />}
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  loading: booksLoadingSelector(state),
-  books: bookItemsSelector(state),
-  error: booksErrorSelector(state),
-  currentPage: currentPageSelector(state),
-  booksPerPage: booksPerPageSelector(state),
-  currentBooks: currentBookItemsSelector(state),
+  loading: booksFetchIsStatusInProgress(state),
+  books: booksFetchItemsSelector(state),
+  error: booksFetchErrorSelector(state),
+  currentPage: booksFetchCurrentPageSelector(state),
+  booksPerPage: booksFetchBooksPerPagePageSelector(state),
+  currentBooks: booksFetchCurrentItemsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getAllBooks: () => dispatch(getBooks()),
+  getAllBooks: () => dispatch(fetchBooksStart()),
   paginate: (page) => dispatch(paginateBooks(page)),
 });
 

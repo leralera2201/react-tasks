@@ -1,25 +1,25 @@
-import {
-  BOOKS_ERROR,
-  BOOKS_REQUEST,
-  PAGINATE_BOOKS,
-  SET_BOOKS,
-} from "../types";
+import { BOOKS_ACTION_TYPES } from "../action-types/books.action-types";
 
-export const getBooks = () => ({
-  type: BOOKS_REQUEST,
+export const fetchBooksStart = () => ({
+  type: BOOKS_ACTION_TYPES.BOOKS_FETCH.START
 });
 
-export const setBooks = (books) => ({
-  type: SET_BOOKS,
-  payload: { books },
+export const fetchBooksInProgress = () => ({
+  type: BOOKS_ACTION_TYPES.BOOKS_FETCH.IN_PROGRESS,
+});
+
+export const fetchBooksSuccess = (books) => ({
+  type: BOOKS_ACTION_TYPES.BOOKS_FETCH.SUCCESS,
+  payload: {books},
+});
+
+export const fetchBooksError = (error) => ({
+  type: BOOKS_ACTION_TYPES.BOOKS_FETCH.ERROR,
+  payload: error,
 });
 
 export const paginateBooks = (page = 1) => ({
-  type: PAGINATE_BOOKS,
+  type: BOOKS_ACTION_TYPES.BOOKS_PAGINATE,
   payload: { page },
 });
 
-export const setBooksError = (error) => ({
-  type: BOOKS_ERROR,
-  payload: error,
-});

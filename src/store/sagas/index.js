@@ -1,9 +1,13 @@
-import { fork } from "redux-saga/effects";
+import { all, fork } from 'redux-saga/effects';
 
-import { booksWatcher } from "../../pages/Books/sagas/books.sagas";
-import { bookWatcher } from "../../pages/Book/sagas/book.sagas";
+import * as booksSagas from '../../pages/Books/sagas/books.sagas';
+import * as bookSagas from '../../pages/Book/sagas/book.sagas';
 
-export default function* allSagas() {
-  yield fork(booksWatcher);
-  yield fork(bookWatcher);
+const combinedSagas = {
+  ...booksSagas,
+  ...bookSagas,
+};
+
+export default function* rootSaga() {
+  yield all(Object.values(combinedSagas).map((saga) => fork(saga)));
 }

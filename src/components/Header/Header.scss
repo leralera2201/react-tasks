@@ -1,0 +1,11 @@
+.link {
+  color: white;
+  padding: 0 10px;
+  &-active {
+    background: white;
+    color: black !important;
+  }
+  &:hover {
+    color: white;
+  }
+}

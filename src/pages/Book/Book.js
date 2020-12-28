@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import { Card, CardBody, CardSubtitle, CardText, CardTitle } from "reactstrap";
+import {Button, Card, CardBody, CardSubtitle, CardText, CardTitle} from "reactstrap";
 import { connect } from "react-redux";
 import moment from "moment";
 
 import { Loader, Error } from "../../components";
 
-import { getBook } from "./actions/book.actions";
+import {deleteBookStart, fetchBookStart} from "./actions/book.actions";
 import {
-  bookErrorSelector,
-  bookItemSelector,
-  bookLoadingSelector,
-} from "./selectors";
+  bookFetchDataSelector,
+  bookFetchErrorSelector, bookFetchIsStatusInProgress
+} from "./selectors/book.selectors";
+
 
 class Book extends Component {
   componentDidMount() {
@@ -21,6 +21,22 @@ class Book extends Component {
       },
     } = this.props;
     getBookById(id);
+  }
+
+  deleteBook = id => {
+    const { deleteBook } = this.props;
+    const confirmation = window.confirm('Are you sure?');
+    if(confirmation){
+      deleteBook(id);
+    }
+  }
+
+  updateBook = id => {
+    const { book, history } = this.props;
+    history.push({
+      pathname: `/books/${id}/update`,
+      state: { book }
+    });
   }
 
   render() {
@@ -43,6 +59,12 @@ class Book extends Component {
                   {moment(book.publishDate).fromNow()}
                 </small>
               </CardText>
+              <Button onClick={() => this.deleteBook(book.id)}>
+                Delete this book
+              </Button>
+              <Button onClick={() => this.updateBook(book.id)}>
+                Update this book
+              </Button>
             </CardBody>
           </Card>
         )}
@@ -54,13 +76,14 @@ class Book extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  book: bookItemSelector(state),
-  loading: bookLoadingSelector(state),
-  error: bookErrorSelector(state),
+  book: bookFetchDataSelector(state),
+  loading: bookFetchIsStatusInProgress(state),
+  error: bookFetchErrorSelector(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getBookById: (id) => dispatch(getBook(id)),
+  getBookById: (id) => dispatch(fetchBookStart(id)),
+  deleteBook: (id) => dispatch(deleteBookStart(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Book);

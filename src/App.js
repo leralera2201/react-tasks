@@ -5,6 +5,7 @@ import { Footer, Header } from "./components";
 import Home from "./pages/Home";
 import Books from "./pages/Books";
 import Book from "./pages/Book";
+import BookForm from "./pages/Book/BookForm";
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
         <Switch>
           <Route path={"/"} exact component={Home} />
           <Route path={"/books"} exact component={Books} />
+          <Route path={"/books/create"} exact component={BookForm} />
           <Route path={"/books/:id"} exact component={Book} />
+          <Route path={"/books/:id/update"} exact component={BookForm} />
         </Switch>
       </div>
       <Footer />

@@ -3,10 +3,10 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 
-import "./index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./store/store";
+import './styles/vendor.scss'
 
 ReactDOM.render(
   <BrowserRouter>

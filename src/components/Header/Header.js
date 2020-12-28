@@ -2,6 +2,8 @@ import React from "react";
 import { Navbar, NavbarBrand } from "reactstrap";
 import { Link, NavLink } from "react-router-dom";
 
+import './Header.scss';
+
 const Header = () => {
   return (
     <Navbar color="dark" dark expand="md" className="h50">
@@ -11,7 +13,7 @@ const Header = () => {
         </Link>
         <NavLink
           exact
-          activeClassName="active-link"
+          activeClassName="link-active"
           to="/books"
           className="fz20 link"
         >
