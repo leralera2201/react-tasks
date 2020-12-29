@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Button } from "reactstrap";
 
 import { Loader, BookCard, BooksPagination, Error } from "../../components";
 
-import {fetchBooksStart, paginateBooks} from "./actions/books.actions";
+import { paginateBooks } from "./actions/books.actions";
+// import * as BookSelectors from './selectors/books.selectors';
 import {
   booksFetchErrorSelector,
   booksFetchIsStatusInProgress,
@@ -12,21 +14,21 @@ import {
   booksFetchBooksPerPagePageSelector,
   booksFetchCurrentItemsSelector
 } from "./selectors/books.selectors";
-import {Button} from "reactstrap";
+import { fetchBooks } from "./thunks/book.thunks";
 
 class Books extends Component {
+
   componentDidMount() {
-    const { getAllBooks, paginate, location: {state} } = this.props;
+    const { getAllBooks, location: {state} } = this.props;
     if(state && state.withoutFetch) {
-      paginate()
-      return
+      return;
     }
     getAllBooks();
   }
 
   createBook = () => {
     const { history } = this.props;
-    history.push('/books/create')
+    history.push('/books/create');
   }
 
   render() {
@@ -87,8 +89,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getAllBooks: () => dispatch(fetchBooksStart()),
   paginate: (page) => dispatch(paginateBooks(page)),
+  getAllBooks: () => dispatch(fetchBooks())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Books);

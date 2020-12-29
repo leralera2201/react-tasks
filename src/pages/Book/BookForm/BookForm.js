@@ -5,14 +5,6 @@ import {connect} from "react-redux";
 import Field from "../../../components/Field";
 
 import {createBookStart, updateBookStart} from "../actions/book.actions";
-import {
-    bookCreateErrorSelector,
-    bookCreateIsStatusInProgress,
-    bookCreateIsStatusSuccess,
-    bookUpdateErrorSelector,
-    bookUpdateIsStatusInProgress,
-    bookUpdateIsStatusSuccess
-} from "../selectors/book.selectors";
 
 const fields = {
     title: {
@@ -92,7 +84,7 @@ class BookForm extends Component {
         const data = this.state;
         const { match: { params: { id } } } = this.props;
         return (
-            <div className={'container pt-5'}>
+            <div className='container pt-5'>
                 <Form>
                     {Object.entries(data).map(([fieldName, field]) => (
                         <Field
@@ -111,18 +103,9 @@ class BookForm extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    // createLoading: bookCreateIsStatusInProgress(state),
-    // createSuccess: bookCreateIsStatusSuccess(state),
-    // createError: bookCreateErrorSelector(state),
-    // updateLoading: bookUpdateIsStatusInProgress(state),
-    // updateSuccess: bookUpdateIsStatusSuccess(state),
-    // updateError: bookUpdateErrorSelector(state),
-});
-
 const mapDispatchToProps = (dispatch) => ({
     createBook: (book) => dispatch(createBookStart(book)),
     updateBook: (book) => dispatch(updateBookStart(book)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookForm);
+export default connect(null, mapDispatchToProps)(BookForm);

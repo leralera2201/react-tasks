@@ -7,8 +7,10 @@ import { Loader, Error } from "../../components";
 
 import {deleteBookStart, fetchBookStart} from "./actions/book.actions";
 import {
+  bookDeleteIsStatusSuccess,
   bookFetchDataSelector,
-  bookFetchErrorSelector, bookFetchIsStatusInProgress
+  bookFetchErrorSelector,
+  bookFetchIsStatusInProgress
 } from "./selectors/book.selectors";
 
 
@@ -23,11 +25,16 @@ class Book extends Component {
     getBookById(id);
   }
 
+
   deleteBook = id => {
-    const { deleteBook } = this.props;
+    const { deleteBook, history } = this.props;
     const confirmation = window.confirm('Are you sure?');
     if(confirmation){
       deleteBook(id);
+      history.push({
+        pathname: '/books',
+        state: { withoutFetch: true }
+      });
     }
   }
 
@@ -79,6 +86,7 @@ const mapStateToProps = (state) => ({
   book: bookFetchDataSelector(state),
   loading: bookFetchIsStatusInProgress(state),
   error: bookFetchErrorSelector(state),
+  deleteSuccess: bookDeleteIsStatusSuccess(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

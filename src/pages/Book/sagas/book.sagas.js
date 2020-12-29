@@ -1,6 +1,7 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 
 import {createBook, deleteBook, getBook, updateBook} from "../../../api/books";
+import {notifier} from "../../../helpers/Notifier";
 
 import {
   fetchBookInProgress,
@@ -37,8 +38,10 @@ function* bookCreateSaga({ payload: {book} }) {
     yield put(createBookInProgress());
     const data = yield call(createBook, book);
     yield put(createBookSuccess(data));
+    notifier.notifySuccess('Book was created successfully!');
   } catch (e) {
     yield put(createBookError("Something went wrong. Try again"));
+    notifier.notifyError('Something went wrong.');
   }
 }
 
@@ -51,8 +54,10 @@ function* bookUpdateSaga({ payload: {book} }) {
     yield put(updateBookInProgress());
     const data = yield call(updateBook, book);
     yield put(updateBookSuccess(data));
+    notifier.notifySuccess('Book was updated successfully!');
   } catch (e) {
     yield put(updateBookError("Something went wrong. Try again"));
+    notifier.notifyError('Something went wrong.');
   }
 }
 
@@ -65,8 +70,10 @@ function* bookDeleteSaga({ payload: {id} }) {
     yield put(deleteBookInProgress());
     const data = yield call(deleteBook, id);
     yield put(deleteBookSuccess(data));
+    notifier.notifySuccess('Book was deleted successfully!');
   } catch (e) {
     yield put(deleteBookError("Something went wrong. Try again"));
+    notifier.notifyError('Something went wrong.');
   }
 }
 
