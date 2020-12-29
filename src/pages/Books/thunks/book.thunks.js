@@ -5,7 +5,7 @@ import {fetchBooksError, fetchBooksInProgress, fetchBooksSuccess, paginateBooks}
 
 export const fetchBooks = () => (dispatch) => {
     dispatch(fetchBooksInProgress());
-    getBooks()
+    return getBooks()
         .then(data => {
             dispatch(fetchBooksSuccess(data));
             dispatch(paginateBooks());

@@ -1,6 +1,3 @@
-import {getBooks} from "../../../api/books";
-import {notifier} from "../../../helpers/Notifier";
-
 import { BOOKS_ACTION_TYPES } from "../action-types/books.action-types";
 
 export const fetchBooksStart = () => ({
