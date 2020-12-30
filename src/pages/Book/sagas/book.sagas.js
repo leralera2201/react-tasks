@@ -33,7 +33,7 @@ export function* bookFetchWatcher() {
   yield takeLatest(BOOK_ACTION_TYPES.BOOK_FETCH.START, bookFetchSaga);
 }
 
-function* bookCreateSaga({ payload: {book} }) {
+export function* bookCreateSaga({ payload: {book} }) {
   try {
     yield put(createBookInProgress());
     const data = yield call(createBook, book);
@@ -49,7 +49,7 @@ export function* bookCreateWatcher() {
   yield takeLatest(BOOK_ACTION_TYPES.BOOK_CREATE.START, bookCreateSaga);
 }
 
-function* bookUpdateSaga({ payload: {book} }) {
+export function* bookUpdateSaga({ payload: {book} }) {
   try {
     yield put(updateBookInProgress());
     const data = yield call(updateBook, book);
@@ -65,7 +65,7 @@ export function* bookUpdateWatcher() {
   yield takeLatest(BOOK_ACTION_TYPES.BOOK_UPDATE.START, bookUpdateSaga);
 }
 
-function* bookDeleteSaga({ payload: {id} }) {
+export function* bookDeleteSaga({ payload: {id} }) {
   try {
     yield put(deleteBookInProgress());
     const data = yield call(deleteBook, id);
