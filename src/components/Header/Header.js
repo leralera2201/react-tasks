@@ -9,7 +9,7 @@ const Header = () => {
     <Navbar color="dark" dark expand="md" className="h50">
       <div className="container flex-space-between">
         <Link to={"/"}>
-          <NavbarBrand className="fz30 p0">Blog</NavbarBrand>
+          <NavbarBrand className="fz30 p0 header-logo">Blog</NavbarBrand>
         </Link>
         <NavLink
           exact

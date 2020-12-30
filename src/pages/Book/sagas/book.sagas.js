@@ -19,7 +19,7 @@ import {
 } from "../actions/book.actions";
 import { BOOK_ACTION_TYPES } from "../action-types/book.action-types";
 
-function* bookFetchSaga({ payload: {id} }) {
+export function* bookFetchSaga({ payload: {id} }) {
   try {
     yield put(fetchBookInProgress());
     const data = yield call(getBook, id);

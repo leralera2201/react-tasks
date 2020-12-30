@@ -51,6 +51,7 @@
     "mini-css-extract-plugin": "0.11.3",
     "moment": "^2.29.1",
     "nock": "^13.0.5",
+    "node-fetch": "^2.6.1",
     "node-sass": "^4.0.0",
     "optimize-css-assets-webpack-plugin": "5.0.4",
     "pnp-webpack-plugin": "1.6.4",
@@ -127,7 +128,7 @@
       "<rootDir>/src/setupTests.js"
     ],
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
+      "<rootDir>/src/**/__tests__/**/*.{spec,test}.{js,jsx,ts,tsx}",
       "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"
     ],
     "testEnvironment": "jsdom",
@@ -168,5 +169,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1"
   }
 }
