@@ -32,10 +32,21 @@ describe('App', () => {
         expect(wrapper.find(Header).length).toEqual(1);
     });
 
+    it('renders the Home', () => {
+        const wrapper = mount(formRouterWithProvider('/'));
+        expect(wrapper.find(Home).length).toEqual(1);
+    });
+
     it('renders the Books', () => {
         const wrapper = mount(formRouterWithProvider('/books'));
         expect(wrapper.find(Books).length).toEqual(1);
         expect(wrapper.find(Home).length).toEqual(0);
+    });
+
+    it('renders the BookForm', () => {
+        const wrapper = mount(formRouterWithProvider('/books/create'));
+        expect(wrapper.find(BookForm).length).toEqual(1);
+        expect(wrapper.find(Books).length).toEqual(0);
     });
 
     it('Header text is Blog', () => {

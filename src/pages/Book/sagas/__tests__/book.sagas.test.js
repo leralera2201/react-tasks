@@ -1,16 +1,16 @@
-import { runSaga } from 'redux-saga'
-
-import * as api from './../../../../api/books'
+import {takeLatest, put, call} from 'redux-saga/effects';
+import sinon from 'sinon';
+import * as api from 'api/books'
 
 import {BOOK_ACTION_TYPES} from "../../action-types/book.action-types";
-
-import {bookCreateSaga, bookDeleteSaga, bookFetchSaga, bookUpdateSaga} from "../book.sagas";
 import {
-    createBookInProgress, createBookSuccess,
-    deleteBookInProgress, deleteBookSuccess,
-    fetchBookInProgress, fetchBookSuccess,
-    updateBookInProgress, updateBookSuccess
+    createBookInProgress,
+    createBookSuccess, deleteBookInProgress, deleteBookSuccess,
+    fetchBookInProgress,
+    fetchBookSuccess, updateBookInProgress, updateBookSuccess
 } from "../../actions/book.actions";
+
+import bookWatcher, {bookCreateSaga, bookDeleteSaga, bookFetchSaga, bookUpdateSaga} from './../book.sagas';
 
 const dummyBook = {
     "id": 0,
@@ -21,111 +21,160 @@ const dummyBook = {
     "publishDate": "2020-12-30T16:01:13.371Z"
 };
 
-describe('make book fetch request', () => {
-    it('get book successfully', async () => {
-        const requestBook = jest.spyOn(api, 'getBook')
-            .mockImplementation(() => Promise.resolve(dummyBook));
-        const dispatched = [];
-        await runSaga({
-            dispatch: (action) => dispatched.push(action),
-        }, bookFetchSaga, {payload: {id: 1}});
-        expect(requestBook).toHaveBeenCalledTimes(1);
-        expect(dispatched).toEqual([fetchBookInProgress(), fetchBookSuccess(dummyBook)]);
-        requestBook.mockClear();
-    });
+describe('testing book fetch saga ', () => {
+    describe('watcher', () => {
+        const iteratorWatcher = bookWatcher.bookFetchWatcher();
 
-    it('get book - error', async () => {
-        const requestBook = jest.spyOn(api, 'getBook')
-            .mockImplementation(() => Promise.reject());
-        const dispatched = [];
-        await runSaga({
-            dispatch: (action) => dispatched.push(action),
-        }, bookFetchSaga, {payload: {id: 1}});
-        expect(requestBook).toHaveBeenCalledTimes(1);
-        expect(dispatched[0]).toHaveProperty('type', BOOK_ACTION_TYPES.BOOK_FETCH.IN_PROGRESS)
-        expect(dispatched[1]).toHaveProperty('type', BOOK_ACTION_TYPES.BOOK_FETCH.ERROR)
-        requestBook.mockClear();
-    });
-});
+        it('should wait for every BOOK_FETCH.START action and call bookFetchSaga', () => {
+            expect(iteratorWatcher.next().value)
+                .toEqual(takeLatest(BOOK_ACTION_TYPES.BOOK_FETCH.START, bookFetchSaga));
+        });
 
-describe('make book add request', () => {
-    it('create book successfully', async () => {
-        const requestBook = jest.spyOn(api, 'createBook')
-            .mockImplementation(() => Promise.resolve(dummyBook));
-        const dispatched = [];
-        await runSaga({
-            dispatch: (action) => dispatched.push(action),
-        }, bookCreateSaga, {payload: {book: dummyBook}});
-        expect(requestBook).toHaveBeenCalledTimes(1);
-        expect(dispatched).toEqual([createBookInProgress(), createBookSuccess(dummyBook)]);
-        requestBook.mockClear();
-    });
+        it('should be done on next iteration', () => {
+            expect(iteratorWatcher.next().done).toBeTruthy();
+        });
+    })
 
-    it('create book - error', async () => {
-        const requestBook = jest.spyOn(api, 'createBook')
-            .mockImplementation(() => Promise.reject());
-        const dispatched = [];
-        await runSaga({
-            dispatch: (action) => dispatched.push(action),
-        }, bookCreateSaga, {payload: {book: dummyBook}});
-        expect(requestBook).toHaveBeenCalledTimes(1);
-        expect(dispatched[0]).toHaveProperty('type', BOOK_ACTION_TYPES.BOOK_CREATE.IN_PROGRESS)
-        expect(dispatched[1]).toHaveProperty('type', BOOK_ACTION_TYPES.BOOK_CREATE.ERROR)
-        requestBook.mockClear();
+    describe('worker', () => {
+        jest.spyOn(api, 'getBook')
+            .mockImplementation(() => Promise.resolve());
+
+        const action = { type: BOOK_ACTION_TYPES.BOOK_FETCH.START, payload: {id: 1}};
+        const iteratorSaga = bookFetchSaga(action);
+
+        it('puts fetchBookInProgress action', () => {
+            expect(iteratorSaga.next().value).toEqual(put(fetchBookInProgress()));
+        });
+
+        it('calls get book request', () => {
+            expect(iteratorSaga.next().value).toEqual(call(api.getBook, action.payload.id));
+        });
+
+        it('puts fetchBookSuccess action', () => {
+            expect(iteratorSaga.next().value).toEqual(put(fetchBookSuccess()));
+        });
     });
 });
 
-describe('make book update request', () => {
-    it('update book successfully', async () => {
-        const requestBook = jest.spyOn(api, 'updateBook')
-            .mockImplementation(() => Promise.resolve(dummyBook));
-        const dispatched = [];
-        await runSaga({
-            dispatch: (action) => dispatched.push(action),
-        }, bookUpdateSaga, {payload: {book: dummyBook}});
-        expect(requestBook).toHaveBeenCalledTimes(1);
-        expect(dispatched).toEqual([updateBookInProgress(), updateBookSuccess(dummyBook)]);
-        requestBook.mockClear();
-    });
+describe('testing book create saga ', () => {
+    describe('watcher', () => {
+        const iteratorWatcher = bookWatcher.bookCreateWatcher();
 
-    it('update book - error', async () => {
-        const requestBook = jest.spyOn(api, 'updateBook')
-            .mockImplementation(() => Promise.reject());
-        const dispatched = [];
-        await runSaga({
-            dispatch: (action) => dispatched.push(action),
-        }, bookUpdateSaga, {payload: {book: dummyBook}});
-        expect(requestBook).toHaveBeenCalledTimes(1);
-        expect(dispatched[0]).toHaveProperty('type', BOOK_ACTION_TYPES.BOOK_UPDATE.IN_PROGRESS)
-        expect(dispatched[1]).toHaveProperty('type', BOOK_ACTION_TYPES.BOOK_UPDATE.ERROR)
-        requestBook.mockClear();
+        it('should wait for every BOOK_CREATE.START action and call bookCreateSaga', () => {
+            expect(iteratorWatcher.next().value)
+                .toEqual(takeLatest(BOOK_ACTION_TYPES.BOOK_CREATE.START, bookCreateSaga));
+        });
+
+        it('should be done on next iteration', () => {
+            expect(iteratorWatcher.next().done).toBeTruthy();
+        });
+    })
+
+    describe('worker', () => {
+        sinon.stub(api, 'createBook').callsFake(() => ({
+            json: () => dummyBook
+        }));
+
+        const action = { type: BOOK_ACTION_TYPES.BOOK_CREATE.START, payload: {book: dummyBook}};
+        const iteratorSaga = bookCreateSaga(action);
+
+        it('puts createBookInProgress action', () => {
+            expect(iteratorSaga.next().value).toEqual(put(createBookInProgress()));
+        });
+
+        it('calls create book request', () => {
+            expect(iteratorSaga.next().value).toEqual(call(api.createBook, action.payload.book));
+        });
+
+        it('puts createBookSuccess action', () => {
+            expect(iteratorSaga.next().value).toEqual(put(createBookSuccess()));
+        });
     });
 });
 
-describe('make book delete request', () => {
-    const id = 1;
-    it('delete book successfully', async () => {
-        const requestBook = jest.spyOn(api, 'deleteBook')
-            .mockImplementation(() => Promise.resolve(id));
-        const dispatched = [];
-        await runSaga({
-            dispatch: (action) => dispatched.push(action),
-        }, bookDeleteSaga, {payload: {id}});
-        expect(requestBook).toHaveBeenCalledTimes(1);
-        expect(dispatched).toEqual([deleteBookInProgress(), deleteBookSuccess(id)]);
-        requestBook.mockClear();
-    });
+describe('testing book update saga ', () => {
+    describe('watcher', () => {
+        const iteratorWatcher = bookWatcher.bookUpdateWatcher();
 
-    it('delete book - error', async () => {
-        const requestBook = jest.spyOn(api, 'deleteBook')
-            .mockImplementation(() => Promise.reject());
-        const dispatched = [];
-        await runSaga({
-            dispatch: (action) => dispatched.push(action),
-        }, bookDeleteSaga, {payload: {id}});
-        expect(requestBook).toHaveBeenCalledTimes(1);
-        expect(dispatched[0]).toHaveProperty('type', BOOK_ACTION_TYPES.BOOK_DELETE.IN_PROGRESS)
-        expect(dispatched[1]).toHaveProperty('type', BOOK_ACTION_TYPES.BOOK_DELETE.ERROR)
-        requestBook.mockClear();
+        it('should wait for every BOOK_UPDATE.START action and call bookUpdateSaga', () => {
+            expect(iteratorWatcher.next().value)
+                .toEqual(takeLatest(BOOK_ACTION_TYPES.BOOK_UPDATE.START, bookUpdateSaga));
+        });
+
+        it('should be done on next iteration', () => {
+            expect(iteratorWatcher.next().done).toBeTruthy();
+        });
+    })
+
+    describe('worker', () => {
+        let updateBook;
+
+        beforeEach(function() {
+            updateBook = sinon.stub(api, "updateBook");
+            updateBook.withArgs(dummyBook).returns(Promise.resolve(dummyBook));
+        });
+
+        afterEach(function() {
+            updateBook.restore();
+        });
+
+        const action = { type: BOOK_ACTION_TYPES.BOOK_UPDATE.START, payload: {book: dummyBook}};
+        const iteratorSaga = bookUpdateSaga(action);
+
+        it('puts updateBookInProgress action', () => {
+            expect(iteratorSaga.next().value).toEqual(put(updateBookInProgress()));
+        });
+
+        it('calls update book request', () => {
+            expect(iteratorSaga.next().value).toEqual(call(api.updateBook, action.payload.book));
+        });
+
+        it('puts updateBookSuccess action', () => {
+            expect(iteratorSaga.next().value).toEqual(put(updateBookSuccess()));
+        });
+    });
+});
+
+
+describe('testing book delete saga ', () => {
+    describe('watcher', () => {
+        const iteratorWatcher = bookWatcher.bookDeleteWatcher();
+
+        it('should wait for every BOOK_DELETE.START action and call bookUpdateSaga', () => {
+            expect(iteratorWatcher.next().value)
+                .toEqual(takeLatest(BOOK_ACTION_TYPES.BOOK_DELETE.START, bookDeleteSaga));
+        });
+
+        it('should be done on next iteration', () => {
+            expect(iteratorWatcher.next().done).toBeTruthy();
+        });
+    })
+
+    describe('worker', () => {
+        let apiMock;
+
+        beforeEach(function() {
+            apiMock = sinon.stub(api, 'deleteBook');
+        });
+
+        afterEach(function() {
+            apiMock.restore();
+        });
+
+        const action = { type: BOOK_ACTION_TYPES.BOOK_DELETE.START, payload: {id: 1}};
+        const iteratorSaga = bookDeleteSaga(action);
+
+        it('puts deleteBookInProgress action', () => {
+            expect(iteratorSaga.next().value).toEqual(put(deleteBookInProgress()));
+        });
+
+        it('calls delete book request', () => {
+            apiMock.withArgs(1).returns(Promise.resolve(1));
+            expect(iteratorSaga.next().value).toEqual(call(api.deleteBook, action.payload.id));
+        });
+
+        it('puts deleteBookSuccess action', () => {
+            expect(iteratorSaga.next().value).toEqual(put(deleteBookSuccess()));
+        });
     });
 });

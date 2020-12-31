@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 
-import {createBook, deleteBook, getBook, updateBook} from "../../../api/books";
+import {createBook, deleteBook, getBook, updateBook} from "api/books";
 import {notifier} from "../../../helpers/Notifier";
 
 import {
@@ -29,7 +29,7 @@ export function* bookFetchSaga({ payload: {id} }) {
   }
 }
 
-export function* bookFetchWatcher() {
+function* bookFetchWatcher() {
   yield takeLatest(BOOK_ACTION_TYPES.BOOK_FETCH.START, bookFetchSaga);
 }
 
@@ -45,7 +45,7 @@ export function* bookCreateSaga({ payload: {book} }) {
   }
 }
 
-export function* bookCreateWatcher() {
+function* bookCreateWatcher() {
   yield takeLatest(BOOK_ACTION_TYPES.BOOK_CREATE.START, bookCreateSaga);
 }
 
@@ -61,7 +61,7 @@ export function* bookUpdateSaga({ payload: {book} }) {
   }
 }
 
-export function* bookUpdateWatcher() {
+function* bookUpdateWatcher() {
   yield takeLatest(BOOK_ACTION_TYPES.BOOK_UPDATE.START, bookUpdateSaga);
 }
 
@@ -77,6 +77,14 @@ export function* bookDeleteSaga({ payload: {id} }) {
   }
 }
 
-export function* bookDeleteWatcher() {
+function* bookDeleteWatcher() {
   yield takeLatest(BOOK_ACTION_TYPES.BOOK_DELETE.START, bookDeleteSaga);
+}
+
+
+export default {
+  bookCreateWatcher,
+  bookDeleteWatcher,
+  bookFetchWatcher,
+  bookUpdateWatcher
 }

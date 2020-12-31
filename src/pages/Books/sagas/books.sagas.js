@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 
-import { getBooks } from "../../../api/books";
+import { getBooks } from "api/books";
 
 import { fetchBooksError, fetchBooksInProgress, fetchBooksSuccess, paginateBooks } from "../actions/books.actions";
 import { BOOKS_ACTION_TYPES } from "../action-types/books.action-types";
