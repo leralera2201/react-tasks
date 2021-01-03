@@ -8,8 +8,8 @@ const Header = () => {
   return (
     <Navbar color="dark" dark expand="md" className="h50">
       <div className="container flex-space-between">
-        <Link to={"/"}>
-          <NavbarBrand className="fz30 p0 header-logo">Blog</NavbarBrand>
+        <Link to={"/"} className="fz30 p0 header-logo">
+            Blog
         </Link>
         <NavLink
           exact

@@ -18,7 +18,7 @@ const BooksPagination = ({ pages, onPaginate, currentPage }) => {
 
   return (
     <Pagination>
-      <PaginationItem disabled={currentPage === 1} onClick={paginatePrev}>
+      <PaginationItem disabled={currentPage === 1} onClick={paginatePrev} id="paginate-prev">
         <PaginationLink previous />
       </PaginationItem>
       {pages.map((page) => (
@@ -29,6 +29,7 @@ const BooksPagination = ({ pages, onPaginate, currentPage }) => {
         </PaginationItem>
       ))}
       <PaginationItem
+          id="paginate-next"
         disabled={currentPage === pages.length}
         onClick={paginateNext}
       >
