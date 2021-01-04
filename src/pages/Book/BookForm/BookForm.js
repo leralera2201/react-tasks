@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Button, Form} from "reactstrap";
 import {connect} from "react-redux";
 
-import Field from "../../../components/Field";
+import Field from "@components/Field";
 
 import {createBookStart, updateBookStart} from "../actions/book.actions";
 
@@ -34,7 +34,7 @@ const fields = {
     }
 }
 
-class BookForm extends Component {
+export class BookForm extends Component {
     state = {
         ...fields
     }

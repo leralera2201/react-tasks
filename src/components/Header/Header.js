@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <Navbar color="dark" dark expand="md" className="h50">
       <div className="container flex-space-between">
-        <Link to={"/"} className="fz30 p0 header-logo">
+        <Link to={"/"} className="fz30 p0 header-logo color-f">
             Blog
         </Link>
         <NavLink

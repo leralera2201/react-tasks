@@ -1,4 +1,4 @@
-import {getBooks} from "api/books";
+import {getBooks} from "@api/books";
 import {notifier} from "../../../helpers/Notifier";
 
 import {fetchBooksError, fetchBooksInProgress, fetchBooksSuccess, paginateBooks} from "../actions/books.actions";

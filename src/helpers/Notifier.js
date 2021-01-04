@@ -1,9 +1,10 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-import AlertItem from "../components/Alert";
+import AlertItem from "@components/Alert";
 
 class Notifier {
+
     notifySecondary = (message) => {
         toast(<AlertItem color="secondary" message={message}/>, {hideProgressBar: true});
     };

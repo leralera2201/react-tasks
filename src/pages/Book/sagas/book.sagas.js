@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 
-import {createBook, deleteBook, getBook, updateBook} from "api/books";
+import {createBook, deleteBook, getBook, updateBook} from "@api/books";
 import {notifier} from "../../../helpers/Notifier";
 
 import {

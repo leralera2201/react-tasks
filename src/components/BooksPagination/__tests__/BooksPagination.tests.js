@@ -1,5 +1,6 @@
 import React from 'react';
 import {mount, shallow} from "enzyme";
+import toJson from "enzyme-to-json";
 
 import BooksPagination from "../BooksPagination";
 
@@ -10,33 +11,33 @@ describe("Testing BooksPagination component", () => {
         currentPage: 1
     }
 
-    it("BooksPagination will render", () => {
-        const wrapper = mount(<BooksPagination {...props} />)
-        expect(wrapper.length).toEqual(1);
-    })
+    it('renders correctly', () => {
+        const  wrapper = shallow(<BooksPagination {...props} />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 
     it("BooksPagination prev will not render", () => {
-        const wrapper = mount(<BooksPagination {...props}/>)
+        const  wrapper = mount(<BooksPagination {...props} />);
         wrapper.find('#paginate-prev').first().simulate('click');
         expect(props.onPaginate).toHaveBeenCalledTimes(0);
     })
 
     it("BooksPagination prev will render", () => {
-        props.currentPage = 2;
-        const wrapper = mount(<BooksPagination {...props}/>)
+        const  wrapper = mount(<BooksPagination {...props} />);
+        wrapper.setProps({currentPage: 2})
         wrapper.find('#paginate-prev').first().simulate('click');
         expect(props.onPaginate).toHaveBeenCalledTimes(1);
     })
 
     it("BooksPagination next will render", () => {
-        const wrapper = mount(<BooksPagination {...props}/>)
+        const  wrapper = mount(<BooksPagination {...props} />);
         wrapper.find('#paginate-next').first().simulate('click');
         expect(props.onPaginate).toHaveBeenCalledTimes(1);
     })
 
     it("BooksPagination next will not render", () => {
-        props.currentPage = 3;
-        const wrapper = mount(<BooksPagination {...props}/>)
+        const  wrapper = mount(<BooksPagination {...props} />);
+        wrapper.setProps({currentPage: 3})
         wrapper.find('#paginate-next').first().simulate('click');
         expect(props.onPaginate).toHaveBeenCalledTimes(0);
     })

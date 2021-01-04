@@ -3,7 +3,7 @@ import {Button, Card, CardBody, CardSubtitle, CardText, CardTitle} from "reactst
 import { connect } from "react-redux";
 import moment from "moment";
 
-import { Loader, Error } from "../../components";
+import { Loader, Error } from "@components";
 
 import {deleteBookStart, fetchBookStart} from "./actions/book.actions";
 import {
@@ -14,7 +14,7 @@ import {
 } from "./selectors/book.selectors";
 
 
-class Book extends Component {
+export class Book extends Component {
   componentDidMount() {
     const {
       getBookById,
@@ -66,16 +66,16 @@ class Book extends Component {
                   {moment(book.publishDate).fromNow()}
                 </small>
               </CardText>
-              <Button onClick={() => this.deleteBook(book.id)}>
+              <Button onClick={() => this.deleteBook(book.id)} id="delete-book">
                 Delete this book
               </Button>
-              <Button onClick={() => this.updateBook(book.id)}>
+              <Button onClick={() => this.updateBook(book.id)} id="update-book">
                 Update this book
               </Button>
             </CardBody>
           </Card>
         )}
-        {!error && !loading && !book && <div>No book</div>}
+        {!error && !loading && !book && <div id="no-book">No book</div>}
         {error && <Error error={error} />}
       </div>
     );

@@ -18,7 +18,7 @@ const BookCard = ({ book: { title, description, id } }) => {
         <CardSubtitle tag="h6" className="mb-2 text-muted mt-3">
           {description}
         </CardSubtitle>
-        <Button onClick={goToDetail} className="mt-3">
+        <Button onClick={goToDetail} className="mt-3" id="book-card-button">
           Go to detail
         </Button>
       </CardBody>

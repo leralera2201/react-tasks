@@ -1,13 +1,40 @@
-import {mount} from "enzyme";
-import {componentWithRouter} from "../../utils/routerUtils";
-import {notifier} from '../Notifier';
-import AlertItem from "../../components/Alert";
+import React from 'react';
+import {shallow} from "enzyme";
+import toJson from "enzyme-to-json";
 
-// describe("Testing Notifier helpers", () => {
-//     it("Toast will render", () => {
-//         notifier.notifyError('Error');
-//         notifier.notifyError('Error');
-//         const wrapper = mount(componentWithRouter());
-//         expect(wrapper.find('.Toastify__toast-container').length).toEqual(1);
-//     })
-// })
+import App from "../../App";
+
+import {notifier} from '../Notifier';
+
+
+describe("Testing Notifier helpers", () => {
+    it("error toast", () => {
+        notifier.notifyError('Error');
+        const wrapper = shallow(<App/>);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    })
+
+    it("success toast", () => {
+        notifier.notifySuccess('Success');
+        const wrapper = shallow(<App/>);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    })
+
+    it("warning toast", () => {
+        notifier.notifyWarning('Warning');
+        const wrapper = shallow(<App/>);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    })
+
+    it("info toast", () => {
+        notifier.notifyInfo('Info');
+        const wrapper = shallow(<App/>);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    })
+
+    it("secondary toast", () => {
+        notifier.notifySecondary('Secondary');
+        const wrapper = shallow(<App/>);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    })
+})

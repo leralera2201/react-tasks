@@ -40,7 +40,6 @@ const webpackDevClientEntry = require.resolve(
 const reactRefreshOverlayEntry = require.resolve(
   'react-dev-utils/refreshOverlayInterop'
 );
-
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
 const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
@@ -329,8 +328,9 @@ module.exports = function (webpackEnv) {
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',
           'scheduler/tracing': 'scheduler/tracing-profiling',
-          'api': path.resolve(__dirname, 'src/api'),
         }),
+        '@api': path.resolve(__dirname, '../src/api'),
+        '@components': path.resolve(__dirname, '../src/components'),
         ...(modules.webpackAliases || {}),
       },
       plugins: [
@@ -741,6 +741,7 @@ module.exports = function (webpackEnv) {
       net: 'empty',
       tls: 'empty',
       child_process: 'empty',
+      __dirname: true
     },
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter

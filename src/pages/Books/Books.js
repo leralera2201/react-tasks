@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button } from "reactstrap";
 
-import { Loader, BookCard, BooksPagination, Error } from "../../components";
+import { Loader, BookCard, BooksPagination, Error } from "@components";
 
 import { paginateBooks } from "./actions/books.actions";
 // import * as BookSelectors from './selectors/books.selectors';
@@ -14,9 +14,9 @@ import {
   booksFetchBooksPerPagePageSelector,
   booksFetchCurrentItemsSelector
 } from "./selectors/books.selectors";
-import { fetchBooks } from "./thunks/book.thunks";
+import { fetchBooks } from "./thunks/books.thunks";
 
-class Books extends Component {
+export class Books extends Component {
 
   componentDidMount() {
     const { getAllBooks, location: {state} } = this.props;
@@ -53,7 +53,7 @@ class Books extends Component {
     return (
       <div className="pt-5">
         <div className="container">
-          <Button onClick={this.createBook}>
+          <Button onClick={this.createBook} id="create-button">
             Create book
           </Button>
         {loading && <Loader />}
@@ -71,7 +71,7 @@ class Books extends Component {
               />
             </>
         )}
-        {!error && !loading && booksLength === 0 && <div>No books</div>}
+        {!error && !loading && booksLength === 0 && <div id="no-books">No books</div>}
         {error && <Error error={error} />}
         </div>
       </div>

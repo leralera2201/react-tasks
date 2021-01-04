@@ -48,3 +48,12 @@ code {
 .h50 {
   height: 60px;
 }
+
+.color-f {
+  color: #ffffff;
+  text-decoration: none;
+  &:hover{
+    color: #ffffff;
+    text-decoration: none;
+  }
+}
