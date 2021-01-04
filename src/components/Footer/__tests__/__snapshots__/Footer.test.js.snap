@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Footer component renders correctly 1`] = `
+<Navbar
+  className="flex-center h50"
+  color="dark"
+  dark={true}
+  expand="md"
+  tag="nav"
+>
+  <Link
+    className="fz30 color-f"
+    to="/"
+  >
+    Blog
+  </Link>
+</Navbar>
+`;

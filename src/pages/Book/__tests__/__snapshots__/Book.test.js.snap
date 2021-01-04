@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`book render book 1`] = `
+<div
+  className="container pt-5"
+>
+  <Card
+    tag="div"
+  >
+    <CardBody
+      tag="div"
+    >
+      <CardTitle
+        tag="h3"
+      >
+        d
+      </CardTitle>
+      <CardSubtitle
+        className="mb-2 text-muted"
+        tag="h6"
+      >
+        d
+      </CardSubtitle>
+      <CardText
+        tag="p"
+      >
+        d
+      </CardText>
+      <CardText
+        tag="h5"
+      >
+        Page count: 
+        2
+      </CardText>
+      <CardText
+        tag="p"
+      >
+        <small
+          className="text-muted"
+        >
+          Invalid date
+        </small>
+      </CardText>
+      <Button
+        color="secondary"
+        id="delete-book"
+        onClick={[Function]}
+        tag="button"
+      >
+        Delete this book
+      </Button>
+      <Button
+        color="secondary"
+        id="update-book"
+        onClick={[Function]}
+        tag="button"
+      >
+        Update this book
+      </Button>
+    </CardBody>
+  </Card>
+</div>
+`;
+
+exports[`book render no book 1`] = `
+<div
+  className="container pt-5"
+>
+  <div
+    id="no-book"
+  >
+    No book
+  </div>
+</div>
+`;
+
+exports[`book render with loading 1`] = `
+<div
+  className="container pt-5"
+>
+  <Loader />
+</div>
+`;
+
+exports[`testing Book component renders correctly 1`] = `ShallowWrapper {}`;

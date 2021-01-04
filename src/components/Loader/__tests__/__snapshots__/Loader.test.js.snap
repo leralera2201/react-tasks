@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Loader component renders correctly 1`] = `
+<div
+  className="flex-center"
+>
+  <div
+    className="loader-ring"
+  >
+    <div />
+    <div />
+    <div />
+    <div />
+  </div>
+</div>
+`;

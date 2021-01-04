@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Field component renders correctly 1`] = `
+<FormGroup
+  tag="div"
+>
+  <Label
+    htmlFor="name"
+    tag="label"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+      ]
+    }
+  >
+    label
+  </Label>
+  <Input
+    id="name"
+    name="name"
+    onChange={[MockFunction]}
+    placeholder="label"
+    type="text"
+    value="value"
+  />
+</FormGroup>
+`;
