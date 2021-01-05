@@ -1,11 +1,13 @@
 import React from 'react';
 import { Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
-import ColoredDropdown from "../../wrappers/Dropdown/Colored";
-import BorderedMenu from "../../wrappers/Dropdown/Menu";
 
-const menu = (
-    <BorderedMenu>
+import ColoredDropdown from "../../wrappers/Dropdown/Colored";
+
+const DropdownItem = ({wrapper, colorWrapper}) => {
+    const Component = wrapper;
+    const ColorComponent = colorWrapper;
+    const menu = (<Component>
         <Menu.Item>
             <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
                 1st menu item
@@ -21,16 +23,14 @@ const menu = (
                 3rd menu item
             </a>
         </Menu.Item>
-    </BorderedMenu>
-);
-
-const DropdownItem = () => {
+    </Component>
+    );
     return (
-        <ColoredDropdown overlay={menu} trigger={['click']} color="black">
+        <ColorComponent overlay={menu} trigger={['click']} color="black">
             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                 Hover me <DownOutlined />
             </a>
-        </ColoredDropdown>
+        </ColorComponent>
     );
 };
 

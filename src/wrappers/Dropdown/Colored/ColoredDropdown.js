@@ -2,6 +2,7 @@ import styled, {css} from 'styled-components';
 import {Dropdown} from "antd";
 
 const ColoredDropdown = styled((props => <Dropdown {...props} />))`
+    margin: 10px;
   display: block;
   width: 150px;
   ${props => props.color && css`

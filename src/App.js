@@ -1,31 +1,26 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import Button from "@components/Button";
-import Typography from "@components/Typography";
-import Dropdown from "@components/Dropdown";
-import Select from "@components/Select";
+import Header from "@components/Header";
 
-import DashedButton from "./wrappers/Buttons/Dashed/DashedButton";
-import PrimaryButton from "./wrappers/Buttons/Primary";
-import DangerButton from "./wrappers/Buttons/Danger";
-import WarningTypography from "./wrappers/Typography/Warning";
-import SuccessTypography from "./wrappers/Typography/Success";
-import DangerTypography from "./wrappers/Typography/Danger";
+import Buttons from "./pages/Buttons";
+import Typography from "./pages/Typography";
+import Dropdown from "./pages/Dropdown";
+import Select from "./pages/Select";
+import Alert from "./pages/Alert";
 
 
 function App() {
   return (
     <div className="App">
-        <Button>Button</Button>
-        <DashedButton>Dashed button</DashedButton>
-        <PrimaryButton>Primary Button</PrimaryButton>
-        <DangerButton>Danger Button</DangerButton>
-        <Typography>I am default typography</Typography>
-        <WarningTypography small>I am small warning typography</WarningTypography>
-        <DangerTypography>I am danger typography</DangerTypography>
-        <SuccessTypography large>I am large success typography</SuccessTypography>
-        <Dropdown />
-        <Select />
+        <Header />
+        <Switch>
+            <Route path="/" exact component={Buttons}/>
+            <Route path="/typography" exact component={Typography}/>
+            <Route path="/dropdown" exact component={Dropdown}/>
+            <Route path="/select" exact component={Select}/>
+            <Route path="/alert" exact component={Alert}/>
+        </Switch>
     </div>
   );
 }
