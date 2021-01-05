@@ -1,14 +1,15 @@
 import { createSelector } from "reselect";
+
 import { ACTION_STATUS } from '../../../store/action-types';
 
-const bookRootStateSelector = (state) => state.bookRoot;
+export const bookRootStateSelector = (state) => state.bookRoot;
 
-const bookStateSelector = createSelector(
+export const bookStateSelector = createSelector(
     bookRootStateSelector,
     ({ book }) => book
 );
 
-const bookFetchSelector = createSelector(
+export const bookFetchSelector = createSelector(
     bookStateSelector,
     ({ item }) => item
 );
@@ -33,12 +34,12 @@ export const bookFetchIsStatusInProgress = createSelector(
     ( status ) => status === ACTION_STATUS.IN_PROGRESS
 );
 
-const bookCreateSelector = createSelector(
+export const bookCreateSelector = createSelector(
     bookStateSelector,
     ({ create }) => create
 );
 
-const bookCreateStatusSelector = createSelector(
+export const bookCreateStatusSelector = createSelector(
     bookCreateSelector,
     ({ status }) => status
 );
@@ -53,10 +54,6 @@ export const bookCreateIsStatusInProgress = createSelector(
     ( status ) => status === ACTION_STATUS.IN_PROGRESS
 );
 
-export const bookCreateIsStatusSuccess = createSelector(
-    bookCreateStatusSelector,
-    ( status ) => status === ACTION_STATUS.SUCCESS
-);
 
 export const bookUpdateSelector = createSelector(
     bookStateSelector,
@@ -78,10 +75,6 @@ export const bookUpdateIsStatusInProgress = createSelector(
     ( status ) => status === ACTION_STATUS.IN_PROGRESS
 );
 
-export const bookUpdateIsStatusSuccess = createSelector(
-    bookUpdateStatusSelector,
-    ( status ) => status === ACTION_STATUS.SUCCESS
-);
 
 export const bookDeleteSelector = createSelector(
     bookStateSelector,
@@ -107,18 +100,3 @@ export const bookDeleteIsStatusSuccess = createSelector(
     bookDeleteStatusSelector,
     ( status ) => status === ACTION_STATUS.SUCCESS
 );
-//
-// export const bookStatusSuccessSelector = createSelector(
-//     [bookCreateIsStatusSuccess, bookUpdateIsStatusSuccess],
-//     (createSuccess, updateSuccess) => createSuccess || updateSuccess
-// );
-//
-// export const bookStatusLoadingSelector = createSelector(
-//     [bookCreateIsStatusInProgress, bookUpdateIsStatusInProgress],
-//     (createLoading, updateLoading) => createLoading || updateLoading
-// );
-//
-// export const bookErrorSelector = createSelector(
-//     [bookCreateErrorSelector, bookUpdateErrorSelector()],
-//     (createError, updateError) => createError || updateError
-// );

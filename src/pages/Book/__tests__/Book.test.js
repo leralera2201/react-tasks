@@ -1,12 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-
-import { Loader, Error } from '@components';
-
-import { Book } from '../Book';
 import toJson from 'enzyme-to-json';
 
+import { Book } from '../Book';
+
 describe('book', () => {
+
   const props = {
     loading: true,
     error: null,
@@ -19,6 +18,7 @@ describe('book', () => {
     },
     history: { push: jest.fn(), location: {}, listen: jest.fn() },
   };
+
   it('render with loading', () => {
     const wrapper = shallow(<Book {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -64,61 +64,61 @@ describe('book', () => {
   it('render with error', () => {
     props.error = 'Some error';
     const wrapper = shallow(<Book {...props} />);
-    expect(wrapper.find(Error)).toHaveLength(1);
+    expect(toJson(wrapper)).toMatchSnapshot();
   });
 });
 
-describe('testing Book component', () => {
-  const props = {
-    loading: true,
-    error: null,
-    book: null,
-    deleteSuccess: false,
-    getBookById: () => {},
-    deleteBook: () => {},
-    match: {
-      params: {},
-    },
-    history: { push: jest.fn(), location: {}, listen: jest.fn() },
-  };
-
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<Book {...props} />);
-  });
-
-  it('renders correctly', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('render with loading', () => {
-    expect(wrapper.find(Loader)).toHaveLength(1);
-  });
-
-  it('render no book', () => {
-    wrapper.setProps({ loading: false });
-    expect(wrapper.find('#no-book')).toHaveLength(1);
-  });
-
-  // it('update book', () => {
-  //   const button = wrapper.find('#update-book');
-  //   button.simulate('click');
-  //   expect(props.history.push.mock.calls[0][0].pathname).toEqual(
-  //     `/books/${props.book.id}/update`
-  //   );
-  // });
-
-  // it('delete book', () => {
-  //   window.confirm = jest.fn(() => true);
-  //   const button = wrapper.find('#delete-book');
-  //   button.simulate('click');
-  //   expect(window.confirm).toBeCalled();
-  //   expect(props.history.push.mock.calls[0][0].pathname).toEqual(`/books`);
-  // });
-
-  it('render with error', () => {
-    wrapper.setProps({ error: 'Some error' });
-    expect(wrapper.find(Error)).toHaveLength(1);
-  });
-});
+// describe('testing Book component', () => {
+//   const props = {
+//     loading: true,
+//     error: null,
+//     book: null,
+//     deleteSuccess: false,
+//     getBookById: () => {},
+//     deleteBook: () => {},
+//     match: {
+//       params: {},
+//     },
+//     history: { push: jest.fn(), location: {}, listen: jest.fn() },
+//   };
+//
+//   let wrapper;
+//
+//   beforeEach(() => {
+//     wrapper = shallow(<Book {...props} />);
+//   });
+//
+//   it('renders correctly', () => {
+//     expect(wrapper).toMatchSnapshot();
+//   });
+//
+//   it('render with loading', () => {
+//     expect(wrapper.find(Loader)).toHaveLength(1);
+//   });
+//
+//   it('render no book', () => {
+//     wrapper.setProps({ loading: false });
+//     expect(wrapper.find('#no-book')).toHaveLength(1);
+//   });
+//
+//   // it('update book', () => {
+//   //   const button = wrapper.find('#update-book');
+//   //   button.simulate('click');
+//   //   expect(props.history.push.mock.calls[0][0].pathname).toEqual(
+//   //     `/books/${props.book.id}/update`
+//   //   );
+//   // });
+//
+//   // it('delete book', () => {
+//   //   window.confirm = jest.fn(() => true);
+//   //   const button = wrapper.find('#delete-book');
+//   //   button.simulate('click');
+//   //   expect(window.confirm).toBeCalled();
+//   //   expect(props.history.push.mock.calls[0][0].pathname).toEqual(`/books`);
+//   // });
+//
+//   it('render with error', () => {
+//     wrapper.setProps({ error: 'Some error' });
+//     expect(wrapper.find(Error)).toHaveLength(1);
+//   });
+// });

@@ -20,6 +20,7 @@ const initialState = {
 };
 
 describe('books reducer', () => {
+
     const books = [{
         title: "d",
         description: "d",
@@ -30,6 +31,7 @@ describe('books reducer', () => {
     }]
     const error = 'Some error';
     const page = 1;
+
     it('returns the initial state', () => {
         expect(BooksReducer(undefined, {})).toEqual(initialState);
     });

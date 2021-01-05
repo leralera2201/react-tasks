@@ -1,10 +1,8 @@
 import React from 'react';
-import {mount} from "enzyme";
-import {Provider} from "react-redux";
-import store from "../../../../store/store";
-import {componentWithRouter} from "../../../../utils/routerUtils";
+import { mount, shallow } from "enzyme";
+import toJson from "enzyme-to-json";
+
 import {BookForm} from "../BookForm";
-import {Button} from "reactstrap";
 
 
 describe("BookForm", () => {
@@ -20,6 +18,11 @@ describe("BookForm", () => {
         updateBook: jest.fn(),
         history: { push: jest.fn(), location: {}, listen: jest.fn() }
     }
+
+    it('renders correctly', () => {
+        const wrapper = shallow(<BookForm {...props} />);
+        expect(toJson(wrapper)).toMatchSnapshot();
+    });
 
     it('should have 5 inputs', () => {
         const wrapper = mount(<BookForm {...props} />);

@@ -1,14 +1,15 @@
 import { createSelector } from "reselect";
+
 import { ACTION_STATUS } from '../../../store/action-types';
 
-const bookRootStateSelector = (state) => state.bookRoot;
+export const bookRootStateSelector = (state) => state.bookRoot;
 
-const booksStateSelector = createSelector(
+export const booksStateSelector = createSelector(
     bookRootStateSelector,
     ({ books }) => books
 );
 
-const booksFetchSelector = createSelector(
+export const booksFetchSelector = createSelector(
     booksStateSelector,
     ({ item }) => item
 );

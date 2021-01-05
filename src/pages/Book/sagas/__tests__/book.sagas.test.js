@@ -9,12 +9,11 @@ import {
   createBookInProgress,
   createBookSuccess,
   deleteBookInProgress,
-  deleteBookSuccess,
+  deleteBookSuccess, fetchBookError,
   fetchBookInProgress,
   fetchBookSuccess,
   updateBookInProgress,
   updateBookSuccess,
-  fetchBookStart,
 } from '../../actions/book.actions';
 
 import bookWatcher, {
@@ -22,7 +21,6 @@ import bookWatcher, {
   bookDeleteSaga,
   bookFetchSaga,
   bookUpdateSaga,
-  bookFetchWatcher,
 } from './../book.sagas';
 
 const dummyBook = {
@@ -34,19 +32,108 @@ const dummyBook = {
   publishDate: '2020-12-30T16:01:13.371Z',
 };
 
+// test('Saga test', () => {
+//   const iterator = cloneableGenerator(getBooks)(fetchBooksRequest(1, 8));
+//   const watcher = watcherBooks();
+//   deepEqual(
+//       iterator.next(fetchBooksRequest(1, 8)).value,
+//       call(getAllBooks),
+//       'it should return state after request'
+//   );
+//
+//   const cloneSuccess = iterator.clone();
+//   deepEqual(
+//       cloneSuccess.next({ data: [] }).value,
+//       put(fetchBooksSuccess([], 1, 8)),
+//       'it should be test success result'
+//   );
+//
+//   const cloneError = iterator.clone();
+//   expect(cloneError.next().value).toHaveProperty('PUT.action.error', true);
+//
+//   deepEqual(
+//       watcher.next().value,
+//       takeLatest(BOOKS_REQUEST, getBooks),
+//       'it should be test error result'
+//   );
+// });
+
+describe('testing book fetch saga ', () => {
+    describe('watcher', () => {
+        const iteratorWatcher = bookWatcher.bookFetchWatcher();
+
+        it('should wait for every BOOK_FETCH.START action and call bookFetchSaga', () => {
+            expect(iteratorWatcher.next().value)
+                .toEqual(takeLatest(BOOK_ACTION_TYPES.BOOK_FETCH.START, bookFetchSaga));
+        });
+
+        it('should be done on next iteration', () => {
+            expect(iteratorWatcher.next().done).toBeTruthy();
+        });
+    })
+
+    describe('worker success', () => {
+        jest.spyOn(api, 'getBook')
+            .mockImplementation(() => Promise.resolve(dummyBook));
+
+        const action = { type: BOOK_ACTION_TYPES.BOOK_FETCH.START, payload: {id: 1}};
+        const iteratorSaga = bookFetchSaga(action);
+
+        it('puts fetchBookInProgress action', () => {
+            expect(iteratorSaga.next().value).toEqual(put(fetchBookInProgress()));
+        });
+
+        it('calls get book request', () => {
+            expect(iteratorSaga.next().value).toEqual(call(api.getBook, action.payload.id));
+        });
+
+        it('puts fetchBookSuccess action', () => {
+            expect(iteratorSaga.next().value).toEqual(put(fetchBookSuccess()));
+        });
+
+    });
+
+  //   describe('worker error', () => {
+  //       jest.spyOn(api, 'getBook')
+  //           .mockImplementation(() => Promise.reject());
+  //
+  //       const action = { type: BOOK_ACTION_TYPES.BOOK_FETCH.START, payload: {id: 1}};
+  //       const iteratorSaga = bookFetchSaga(action);
+  //
+  //       it('puts fetchBookInProgress action', () => {
+  //         expect(iteratorSaga.next().value).toEqual(put(fetchBookInProgress()));
+  //       });
+  //
+  //       it('calls get book request', () => {
+  //         expect(iteratorSaga.next().value).toEqual(call(api.getBook, action.payload.id));
+  //       });
+  //
+  //       it('puts fetchBookError action', () => {
+  //         expect(iteratorSaga.next().value).toEqual(put(fetchBookError('Something went wrong')));
+  //       });
+  // });
+});
+
 describe('testing book create saga', () => {
-  it('sss', () => expect(1).toBe(1));
   describe('watcher', () => {
     // const iterator = cloneableGenerator(bookFetchSaga)(
     //   fetchBookStart({ payload: { id: 1 } })
     // );
-    const watcher = bookFetchWatcher();
+
+
+    const watcher = bookWatcher.bookCreateWatcher();
 
     it('should wait for every BOOK_CREATE.START action and call bookCreateSaga', () => {
       expect(watcher.next().value).toEqual(
-        takeLatest(BOOK_ACTION_TYPES.BOOK_FETCH.START, bookFetchSaga)
+        takeLatest(BOOK_ACTION_TYPES.BOOK_CREATE.START, bookCreateSaga)
       );
     });
+
+    it('should be done on next iteration', () => {
+      expect(watcher.next().done).toBeTruthy();
+    });
+
+
   });
 
   describe('worker', () => {

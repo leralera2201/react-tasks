@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Books render books 1`] = `
+<div
+  className="pt-5"
+>
+  <div
+    className="container"
+  >
+    <Button
+      color="secondary"
+      id="create-button"
+      onClick={[Function]}
+      tag="button"
+    >
+      Create book
+    </Button>
+    <div
+      className="flex-space-between"
+    >
+      <BookCard
+        book={
+          Object {
+            "description": "d",
+            "id": "d",
+            "title": "d",
+          }
+        }
+        key="d"
+      />
+    </div>
+    <BooksPagination
+      currentPage={1}
+      onPaginate={[MockFunction]}
+      pages={Array []}
+    />
+    <div
+      id="no-books"
+    >
+      No books
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Books render no books 1`] = `
+<div
+  className="pt-5"
+>
+  <div
+    className="container"
+  >
+    <Button
+      color="secondary"
+      id="create-button"
+      onClick={[Function]}
+      tag="button"
+    >
+      Create book
+    </Button>
+    <div
+      id="no-books"
+    >
+      No books
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Books render with error 1`] = `
+<div
+  className="pt-5"
+>
+  <div
+    className="container"
+  >
+    <Button
+      color="secondary"
+      id="create-button"
+      onClick={[Function]}
+      tag="button"
+    >
+      Create book
+    </Button>
+    <Error
+      error="Some error"
+    />
+  </div>
+</div>
+`;
+
+exports[`Books render with loading 1`] = `
+<div
+  className="pt-5"
+>
+  <div
+    className="container"
+  >
+    <Button
+      color="secondary"
+      id="create-button"
+      onClick={[Function]}
+      tag="button"
+    >
+      Create book
+    </Button>
+    <Loader />
+  </div>
+</div>
+`;

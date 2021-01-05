@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookForm renders correctly 1`] = `
+<div
+  className="container pt-5"
+>
+  <Form
+    tag="form"
+  >
+    <Field
+      key="title"
+      label="Title"
+      name="title"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <Field
+      key="description"
+      label="Description"
+      name="description"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <Field
+      key="excerpt"
+      label="Excerpt"
+      name="excerpt"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <Field
+      key="publishDate"
+      label="Publish Date"
+      name="publishDate"
+      onChange={[Function]}
+      type="date"
+      value=""
+    />
+    <Field
+      key="pageCount"
+      label="Page Count"
+      name="pageCount"
+      onChange={[Function]}
+      type="number"
+      value=""
+    />
+    <Button
+      color="secondary"
+      onClick={[Function]}
+      tag="button"
+    >
+      Add
+    </Button>
+  </Form>
+</div>
+`;

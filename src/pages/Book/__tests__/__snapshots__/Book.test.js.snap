@@ -74,6 +74,16 @@ exports[`book render no book 1`] = `
 </div>
 `;
 
+exports[`book render with error 1`] = `
+<div
+  className="container pt-5"
+>
+  <Error
+    error="Some error"
+  />
+</div>
+`;
+
 exports[`book render with loading 1`] = `
 <div
   className="container pt-5"
@@ -81,5 +91,3 @@ exports[`book render with loading 1`] = `
   <Loader />
 </div>
 `;
-
-exports[`testing Book component renders correctly 1`] = `ShallowWrapper {}`;

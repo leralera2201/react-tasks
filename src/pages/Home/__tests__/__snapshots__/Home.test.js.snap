@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders correctly 1`] = `
+<div
+  className="container pt-5"
+>
+  <Jumbotron
+    fluid={true}
+    tag="div"
+  >
+    <Container
+      fluid={true}
+      tag="div"
+    >
+      <h1
+        className="display-3"
+      >
+        Fluid jumbotron
+      </h1>
+      <p
+        className="lead"
+      >
+        This is a modified jumbotron that occupies the entire horizontal space of its parent.
+      </p>
+    </Container>
+  </Jumbotron>
+</div>
+`;
