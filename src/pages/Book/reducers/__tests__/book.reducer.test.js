@@ -1,7 +1,7 @@
-import { ACTION_STATUS } from "../../../../store/action-types";
+import { ACTION_STATUS } from '../../../../store/action-types';
 
-import { BOOK_ACTION_TYPES } from "../../action-types/book.action-types";
-import BookReducer from "../../reducers/book.reducer";
+import { BOOK_ACTION_TYPES } from '../../action-types/book.action-types';
+import BookReducer from '../../reducers/book.reducer';
 
 const initialState = {
   item: {
@@ -23,22 +23,22 @@ const initialState = {
   },
 };
 
-describe("book reducer", () => {
+describe('book reducer', () => {
   const book = {
-    title: "d",
-    description: "d",
-    excerpt: "d",
-    publishDate: "2000-20-20",
+    title: 'd',
+    description: 'd',
+    excerpt: 'd',
+    publishDate: '2000-20-20',
     pageCount: 2,
-    id: "1",
+    id: '1',
   };
-  const error = "Some error";
+  const error = 'Some error';
 
-  it("returns the initial state", () => {
+  it('returns the initial state', () => {
     expect(BookReducer(undefined, {})).toEqual(initialState);
   });
 
-  it("fetch book in progress", () => {
+  it('fetch book in progress', () => {
     expect(
       BookReducer(initialState, {
         type: BOOK_ACTION_TYPES.BOOK_FETCH.IN_PROGRESS,
@@ -52,7 +52,7 @@ describe("book reducer", () => {
     });
   });
 
-  it("fetch book success", () => {
+  it('fetch book success', () => {
     expect(
       BookReducer(initialState, {
         type: BOOK_ACTION_TYPES.BOOK_FETCH.SUCCESS,
@@ -68,7 +68,7 @@ describe("book reducer", () => {
     });
   });
 
-  it("fetch book error", () => {
+  it('fetch book error', () => {
     expect(
       BookReducer(initialState, {
         type: BOOK_ACTION_TYPES.BOOK_FETCH.ERROR,
@@ -85,7 +85,7 @@ describe("book reducer", () => {
     });
   });
 
-  it("create book in progress", () => {
+  it('create book in progress', () => {
     expect(
       BookReducer(initialState, {
         type: BOOK_ACTION_TYPES.BOOK_CREATE.IN_PROGRESS,
@@ -99,7 +99,7 @@ describe("book reducer", () => {
     });
   });
 
-  it("create book success", () => {
+  it('create book success', () => {
     expect(
       BookReducer(initialState, {
         type: BOOK_ACTION_TYPES.BOOK_CREATE.SUCCESS,
@@ -114,7 +114,7 @@ describe("book reducer", () => {
     });
   });
 
-  it("create book error", () => {
+  it('create book error', () => {
     expect(
       BookReducer(initialState, {
         type: BOOK_ACTION_TYPES.BOOK_CREATE.ERROR,
@@ -130,7 +130,7 @@ describe("book reducer", () => {
     });
   });
 
-  it("update book in progress", () => {
+  it('update book in progress', () => {
     expect(
       BookReducer(initialState, {
         type: BOOK_ACTION_TYPES.BOOK_UPDATE.IN_PROGRESS,
@@ -144,7 +144,7 @@ describe("book reducer", () => {
     });
   });
 
-  it("update book success", () => {
+  it('update book success', () => {
     expect(
       BookReducer(initialState, {
         type: BOOK_ACTION_TYPES.BOOK_UPDATE.SUCCESS,
@@ -159,7 +159,7 @@ describe("book reducer", () => {
     });
   });
 
-  it("update book error", () => {
+  it('update book error', () => {
     expect(
       BookReducer(initialState, {
         type: BOOK_ACTION_TYPES.BOOK_UPDATE.ERROR,
@@ -175,7 +175,7 @@ describe("book reducer", () => {
     });
   });
 
-  it("delete book in progress", () => {
+  it('delete book in progress', () => {
     expect(
       BookReducer(initialState, {
         type: BOOK_ACTION_TYPES.BOOK_DELETE.IN_PROGRESS,
@@ -189,7 +189,7 @@ describe("book reducer", () => {
     });
   });
 
-  it("delete book success", () => {
+  it('delete book success', () => {
     expect(
       BookReducer(initialState, {
         type: BOOK_ACTION_TYPES.BOOK_DELETE.SUCCESS,
@@ -204,7 +204,7 @@ describe("book reducer", () => {
     });
   });
 
-  it("delete book error", () => {
+  it('delete book error', () => {
     expect(
       BookReducer(initialState, {
         type: BOOK_ACTION_TYPES.BOOK_DELETE.ERROR,

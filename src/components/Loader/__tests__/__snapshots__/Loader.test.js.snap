@@ -2,10 +2,10 @@
 
 exports[`Testing Loader component renders correctly 1`] = `
 <div
-  className="flex-center"
+  className='flex-center'
 >
   <div
-    className="loader-ring"
+    className='loader-ring'
   >
     <div />
     <div />

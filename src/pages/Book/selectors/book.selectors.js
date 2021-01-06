@@ -1,100 +1,100 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
-import { ACTION_STATUS } from "../../../store/action-types";
+import { ACTION_STATUS } from '../../../store/action-types';
 
 export const bookRootStateSelector = (state) => state.bookRoot;
 
 export const bookStateSelector = createSelector(
   bookRootStateSelector,
-  ({ book }) => book
+  ({ book }) => book,
 );
 
 export const bookFetchSelector = createSelector(
   bookStateSelector,
-  ({ item }) => item
+  ({ item }) => item,
 );
 
 export const bookFetchDataSelector = createSelector(
   bookFetchSelector,
-  ({ data }) => data
+  ({ data }) => data,
 );
 
 export const bookFetchStatusSelector = createSelector(
   bookFetchSelector,
-  ({ status }) => status
+  ({ status }) => status,
 );
 
 export const bookFetchErrorSelector = createSelector(
   bookFetchSelector,
-  ({ error }) => error
+  ({ error }) => error,
 );
 
 export const bookFetchIsStatusInProgress = createSelector(
   bookFetchStatusSelector,
-  (status) => status === ACTION_STATUS.IN_PROGRESS
+  (status) => status === ACTION_STATUS.IN_PROGRESS,
 );
 
 export const bookCreateSelector = createSelector(
   bookStateSelector,
-  ({ create }) => create
+  ({ create }) => create,
 );
 
 export const bookCreateStatusSelector = createSelector(
   bookCreateSelector,
-  ({ status }) => status
+  ({ status }) => status,
 );
 
 export const bookCreateErrorSelector = createSelector(
   bookCreateSelector,
-  ({ error }) => error
+  ({ error }) => error,
 );
 
 export const bookCreateIsStatusInProgress = createSelector(
   bookCreateStatusSelector,
-  (status) => status === ACTION_STATUS.IN_PROGRESS
+  (status) => status === ACTION_STATUS.IN_PROGRESS,
 );
 
 export const bookUpdateSelector = createSelector(
   bookStateSelector,
-  ({ update }) => update
+  ({ update }) => update,
 );
 
 export const bookUpdateStatusSelector = createSelector(
   bookUpdateSelector,
-  ({ status }) => status
+  ({ status }) => status,
 );
 
 export const bookUpdateErrorSelector = createSelector(
   bookUpdateSelector,
-  ({ error }) => error
+  ({ error }) => error,
 );
 
 export const bookUpdateIsStatusInProgress = createSelector(
   bookUpdateStatusSelector,
-  (status) => status === ACTION_STATUS.IN_PROGRESS
+  (status) => status === ACTION_STATUS.IN_PROGRESS,
 );
 
 export const bookDeleteSelector = createSelector(
   bookStateSelector,
-  (item) => item.delete
+  (item) => item.delete,
 );
 
 export const bookDeleteStatusSelector = createSelector(
   bookDeleteSelector,
-  ({ status }) => status
+  ({ status }) => status,
 );
 
 export const bookDeleteErrorSelector = createSelector(
   bookDeleteSelector,
-  ({ error }) => error
+  ({ error }) => error,
 );
 
 export const bookDeleteIsStatusInProgress = createSelector(
   bookDeleteStatusSelector,
-  (status) => status === ACTION_STATUS.IN_PROGRESS
+  (status) => status === ACTION_STATUS.IN_PROGRESS,
 );
 
 export const bookDeleteIsStatusSuccess = createSelector(
   bookDeleteStatusSelector,
-  (status) => status === ACTION_STATUS.SUCCESS
+  (status) => status === ACTION_STATUS.SUCCESS,
 );

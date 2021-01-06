@@ -1,55 +1,55 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
-import { ACTION_STATUS } from "../../../store/action-types";
+import { ACTION_STATUS } from '../../../store/action-types';
 
 export const bookRootStateSelector = (state) => state.bookRoot;
 
 export const booksStateSelector = createSelector(
   bookRootStateSelector,
-  ({ books }) => books
+  ({ books }) => books,
 );
 
 export const booksFetchSelector = createSelector(
   booksStateSelector,
-  ({ item }) => item
+  ({ item }) => item,
 );
 
 export const booksFetchDataSelector = createSelector(
   booksFetchSelector,
-  ({ data }) => data
+  ({ data }) => data,
 );
 
 export const booksFetchStatusSelector = createSelector(
   booksFetchSelector,
-  ({ status }) => status
+  ({ status }) => status,
 );
 
 export const booksFetchErrorSelector = createSelector(
   booksFetchSelector,
-  ({ error }) => error
+  ({ error }) => error,
 );
 
 export const booksFetchItemsSelector = createSelector(
   booksFetchDataSelector,
-  ({ books }) => books
+  ({ books }) => books,
 );
 
 export const booksFetchCurrentItemsSelector = createSelector(
   booksFetchDataSelector,
-  ({ currentBooks }) => currentBooks
+  ({ currentBooks }) => currentBooks,
 );
 
 export const booksFetchCurrentPageSelector = createSelector(
   booksFetchDataSelector,
-  ({ currentPage }) => currentPage
+  ({ currentPage }) => currentPage,
 );
 
 export const booksFetchBooksPerPagePageSelector = createSelector(
   booksFetchDataSelector,
-  ({ booksPerPage }) => booksPerPage
+  ({ booksPerPage }) => booksPerPage,
 );
 
 export const booksFetchIsStatusInProgress = createSelector(
   booksFetchStatusSelector,
-  (status) => status === ACTION_STATUS.IN_PROGRESS
+  (status) => status === ACTION_STATUS.IN_PROGRESS,
 );

@@ -1,10 +1,10 @@
-import React from "react";
-import { shallow } from "enzyme";
-import toJson from "enzyme-to-json";
+import React from 'react';
+import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
-import { Book } from "../Book";
+import { Book } from '../Book';
 
-describe("book", () => {
+describe('book', () => {
   const props = {
     loading: true,
     error: null,
@@ -18,50 +18,50 @@ describe("book", () => {
     history: { push: jest.fn(), location: {}, listen: jest.fn() },
   };
 
-  it("render with loading", () => {
+  it('render with loading', () => {
     const wrapper = shallow(<Book {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it("render no book", () => {
+  it('render no book', () => {
     props.loading = false;
     const wrapper = shallow(<Book {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it("render book", () => {
+  it('render book', () => {
     props.book = {
-      title: "d",
-      description: "d",
-      excerpt: "d",
-      publishDate: "2000-20-20",
+      title: 'd',
+      description: 'd',
+      excerpt: 'd',
+      publishDate: '2000-20-20',
       pageCount: 2,
-      id: "1",
+      id: '1',
     };
     const wrapper = shallow(<Book {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });
 
-  it("update book", () => {
+  it('update book', () => {
     const wrapper = shallow(<Book {...props} />);
-    const button = wrapper.find("#update-book").first();
-    button.simulate("click");
+    const button = wrapper.find('#update-book').first();
+    button.simulate('click');
     expect(props.history.push.mock.calls[0][0].pathname).toEqual(
       `/books/${props.book.id}/update`
     );
   });
 
-  it("delete book", () => {
+  it('delete book', () => {
     window.confirm = jest.fn(() => true);
     const wrapper = shallow(<Book {...props} />);
-    const button = wrapper.find("#delete-book").first();
-    button.simulate("click");
+    const button = wrapper.find('#delete-book').first();
+    button.simulate('click');
     expect(window.confirm).toBeCalled();
     expect(props.history.push.mock.calls[0][0].pathname).toEqual(`/books`);
   });
 
-  it("render with error", () => {
-    props.error = "Some error";
+  it('render with error', () => {
+    props.error = 'Some error';
     const wrapper = shallow(<Book {...props} />);
     expect(toJson(wrapper)).toMatchSnapshot();
   });

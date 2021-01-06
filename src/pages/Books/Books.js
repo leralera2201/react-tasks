@@ -1,10 +1,12 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Button } from "reactstrap";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Button } from 'reactstrap';
 
-import { Loader, BookCard, BooksPagination, Error } from "@components";
+import {
+  Loader, BookCard, BooksPagination, Error,
+} from '@components';
 
-import { paginateBooks } from "./actions/books.actions";
+import { paginateBooks } from './actions/books.actions';
 // import * as BookSelectors from './selectors/books.selectors';
 import {
   booksFetchErrorSelector,
@@ -13,8 +15,8 @@ import {
   booksFetchCurrentPageSelector,
   booksFetchBooksPerPagePageSelector,
   booksFetchCurrentItemsSelector,
-} from "./selectors/books.selectors";
-import { fetchBooks } from "./thunks/books.thunks";
+} from './selectors/books.selectors';
+import fetchBooks from './thunks/books.thunks';
 
 export class Books extends Component {
   componentDidMount() {
@@ -30,7 +32,7 @@ export class Books extends Component {
 
   createBook = () => {
     const { history } = this.props;
-    history.push("/books/create");
+    history.push('/books/create');
   };
 
   render() {
@@ -48,7 +50,7 @@ export class Books extends Component {
     const pages = [];
 
     const totalPages = Math.ceil(booksLength / booksPerPage);
-    for (let i = 1; i <= totalPages; i++) {
+    for (let i = 1; i <= totalPages; i += 1) {
       pages.push(i);
     }
 

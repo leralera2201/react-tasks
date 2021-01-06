@@ -1,5 +1,5 @@
-import { BOOK_ACTION_TYPES } from "../action-types/book.action-types";
-import { ACTION_STATUS } from "../../../store/action-types";
+import BOOK_ACTION_TYPES from '../action-types/book.action-types';
+import { ACTION_STATUS } from '../../../store/action-types';
 
 const initialState = {
   item: {

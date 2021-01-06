@@ -1,43 +1,46 @@
-import React, { Component } from "react";
-import { Button, Form } from "reactstrap";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { Button, Form } from 'reactstrap';
+import { connect } from 'react-redux';
 
-import Field from "@components/Field";
+import Field from '@components/Field';
 
-import { createBookStart, updateBookStart } from "../actions/book.actions";
+import { createBookStart, updateBookStart } from '../actions/book.actions';
 
 const fields = {
   title: {
-    label: "Title",
-    type: "text",
-    value: "",
+    label: 'Title',
+    type: 'text',
+    value: '',
   },
   description: {
-    label: "Description",
-    type: "text",
-    value: "",
+    label: 'Description',
+    type: 'text',
+    value: '',
   },
   excerpt: {
-    label: "Excerpt",
-    type: "text",
-    value: "",
+    label: 'Excerpt',
+    type: 'text',
+    value: '',
   },
   publishDate: {
-    label: "Publish Date",
-    type: "date",
-    value: "",
+    label: 'Publish Date',
+    type: 'date',
+    value: '',
   },
   pageCount: {
-    label: "Page Count",
-    type: "number",
-    value: "",
+    label: 'Page Count',
+    type: 'number',
+    value: '',
   },
 };
 
 export class BookForm extends Component {
-  state = {
-    ...fields,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      ...fields,
+    };
+  }
 
   componentDidMount() {
     const {
@@ -45,9 +48,10 @@ export class BookForm extends Component {
     } = this.props;
     if (state && state.book) {
       Object.entries(state.book).forEach(([fieldName, value]) => {
+        const { state: componentState } = this;
         this.setState({
           [fieldName]: {
-            ...this.state[fieldName],
+            ...componentState[fieldName],
             value,
           },
         });
@@ -84,7 +88,7 @@ export class BookForm extends Component {
     }
     this.setState({ ...fields });
     history.push({
-      pathname: "/books",
+      pathname: '/books',
       state: { withoutFetch: true },
     });
   };
@@ -109,7 +113,7 @@ export class BookForm extends Component {
               onChange={this.changeHandler}
             />
           ))}
-          <Button onClick={this.submitHandler}>{id ? "Update" : "Add"}</Button>
+          <Button onClick={this.submitHandler}>{id ? 'Update' : 'Add'}</Button>
         </Form>
       </div>
     );

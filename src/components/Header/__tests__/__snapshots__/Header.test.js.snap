@@ -2,20 +2,20 @@
 
 exports[`Testing Header component renders correctly 1`] = `
 <nav
-  class="h50 navbar navbar-expand-md navbar-dark bg-dark"
+  class='h50 navbar navbar-expand-md navbar-dark bg-dark'
 >
   <div
-    class="container flex-space-between"
+    class='container flex-space-between'
   >
     <a
-      class="fz30 p0 header-logo color-f"
-      href="/"
+      class='fz30 p0 header-logo color-f'
+      href='/'
     >
       Blog
     </a>
     <a
-      class="fz20 link"
-      href="/books"
+      class='fz20 link'
+      href='/books'
     >
       Book
     </a>

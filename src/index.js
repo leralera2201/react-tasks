@@ -1,12 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
-import { Provider } from "react-redux";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import store from "./store/store";
-import "./styles/vendor.scss";
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import store from './store/store';
+import './styles/vendor.scss';
 
 ReactDOM.render(
   <Router>
@@ -14,7 +14,7 @@ ReactDOM.render(
       <App />
     </Provider>
   </Router>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

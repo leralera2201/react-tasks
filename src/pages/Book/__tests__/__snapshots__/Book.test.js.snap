@@ -2,58 +2,58 @@
 
 exports[`book render book 1`] = `
 <div
-  className="container pt-5"
+  className='container pt-5'
 >
   <Card
-    tag="div"
+    tag='div'
   >
     <CardBody
-      tag="div"
+      tag='div'
     >
       <CardTitle
-        tag="h3"
+        tag='h3'
       >
         d
       </CardTitle>
       <CardSubtitle
-        className="mb-2 text-muted"
-        tag="h6"
+        className='mb-2 text-muted'
+        tag='h6'
       >
         d
       </CardSubtitle>
       <CardText
-        tag="p"
+        tag='p'
       >
         d
       </CardText>
       <CardText
-        tag="h5"
+        tag='h5'
       >
         Page count: 
         2
       </CardText>
       <CardText
-        tag="p"
+        tag='p'
       >
         <small
-          className="text-muted"
+          className='text-muted'
         >
           Invalid date
         </small>
       </CardText>
       <Button
-        color="secondary"
-        id="delete-book"
+        color='secondary'
+        id='delete-book'
         onClick={[Function]}
-        tag="button"
+        tag='button'
       >
         Delete this book
       </Button>
       <Button
-        color="secondary"
-        id="update-book"
+        color='secondary'
+        id='update-book'
         onClick={[Function]}
-        tag="button"
+        tag='button'
       >
         Update this book
       </Button>
@@ -64,10 +64,10 @@ exports[`book render book 1`] = `
 
 exports[`book render no book 1`] = `
 <div
-  className="container pt-5"
+  className='container pt-5'
 >
   <div
-    id="no-book"
+    id='no-book'
   >
     No book
   </div>
@@ -76,17 +76,17 @@ exports[`book render no book 1`] = `
 
 exports[`book render with error 1`] = `
 <div
-  className="container pt-5"
+  className='container pt-5'
 >
   <Error
-    error="Some error"
+    error='Some error'
   />
 </div>
 `;
 
 exports[`book render with loading 1`] = `
 <div
-  className="container pt-5"
+  className='container pt-5'
 >
   <Loader />
 </div>

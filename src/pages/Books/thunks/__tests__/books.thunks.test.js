@@ -1,12 +1,12 @@
-import configureMockStore from "redux-mock-store";
-import thunk from "redux-thunk";
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 
-import * as api from "@api/books";
+import * as api from '@api/books';
 
-import { fetchBooksInProgress } from "../../actions/books.actions";
-import { BOOKS_ACTION_TYPES } from "../../action-types/books.action-types";
+import { fetchBooksInProgress } from '../../actions/books.actions';
+import { BOOKS_ACTION_TYPES } from '../../action-types/books.action-types';
 
-import { fetchBooks } from "../books.thunks";
+import { fetchBooks } from '../books.thunks';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -23,18 +23,18 @@ function getAction(store, type) {
 const dummyBooks = [
   {
     id: 0,
-    title: "string",
-    description: "string",
+    title: 'string',
+    description: 'string',
     pageCount: 0,
-    excerpt: "string",
-    publishDate: "2020-12-30T16:01:13.371Z",
+    excerpt: 'string',
+    publishDate: '2020-12-30T16:01:13.371Z',
   },
 ];
 
-describe("getBooks", () => {
-  it("starts request and return response results", async () => {
+describe('getBooks', () => {
+  it('starts request and return response results', async () => {
     jest
-      .spyOn(api, "getBooks")
+      .spyOn(api, 'getBooks')
       .mockImplementation(() => Promise.resolve(dummyBooks));
 
     const store = mockStore();
@@ -56,23 +56,23 @@ describe("getBooks", () => {
     );
 
     expect(actionTypeRequest).toHaveProperty(
-      "type",
+      'type',
       BOOKS_ACTION_TYPES.BOOKS_FETCH.IN_PROGRESS
     );
 
     expect(actionTypeSuccess).toHaveProperty(
-      "type",
+      'type',
       BOOKS_ACTION_TYPES.BOOKS_FETCH.SUCCESS
     );
 
     expect(actionTypePaginate).toHaveProperty(
-      "type",
+      'type',
       BOOKS_ACTION_TYPES.BOOKS_PAGINATE
     );
   });
 
-  it("starts request and return error", async () => {
-    jest.spyOn(api, "getBooks").mockImplementation(() => Promise.reject());
+  it('starts request and return error', async () => {
+    jest.spyOn(api, 'getBooks').mockImplementation(() => Promise.reject());
 
     const store = mockStore();
     await store.dispatch(fetchBooks());
@@ -87,12 +87,12 @@ describe("getBooks", () => {
     );
 
     expect(actionTypeRequest).toHaveProperty(
-      "type",
+      'type',
       BOOKS_ACTION_TYPES.BOOKS_FETCH.IN_PROGRESS
     );
 
     expect(actionTypeError).toHaveProperty(
-      "type",
+      'type',
       BOOKS_ACTION_TYPES.BOOKS_FETCH.ERROR
     );
   });

@@ -2,55 +2,55 @@
 
 exports[`BookForm renders correctly 1`] = `
 <div
-  className="container pt-5"
+  className='container pt-5'
 >
   <Form
-    tag="form"
+    tag='form'
   >
     <Field
-      key="title"
-      label="Title"
-      name="title"
+      key='title'
+      label='Title'
+      name='title'
       onChange={[Function]}
-      type="text"
-      value=""
+      type='text'
+      value=''
     />
     <Field
-      key="description"
-      label="Description"
-      name="description"
+      key='description'
+      label='Description'
+      name='description'
       onChange={[Function]}
-      type="text"
-      value=""
+      type='text'
+      value=''
     />
     <Field
-      key="excerpt"
-      label="Excerpt"
-      name="excerpt"
+      key='excerpt'
+      label='Excerpt'
+      name='excerpt'
       onChange={[Function]}
-      type="text"
-      value=""
+      type='text'
+      value=''
     />
     <Field
-      key="publishDate"
-      label="Publish Date"
-      name="publishDate"
+      key='publishDate'
+      label='Publish Date'
+      name='publishDate'
       onChange={[Function]}
-      type="date"
-      value=""
+      type='date'
+      value=''
     />
     <Field
-      key="pageCount"
-      label="Page Count"
-      name="pageCount"
+      key='pageCount'
+      label='Page Count'
+      name='pageCount'
       onChange={[Function]}
-      type="number"
-      value=""
+      type='number'
+      value=''
     />
     <Button
-      color="secondary"
+      color='secondary'
       onClick={[Function]}
-      tag="button"
+      tag='button'
     >
       Add
     </Button>

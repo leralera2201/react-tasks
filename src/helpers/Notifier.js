@@ -1,7 +1,7 @@
-import React from "react";
-import { toast } from "react-toastify";
+import React from 'react';
+import { toast } from 'react-toastify';
 
-import AlertItem from "@components/Alert";
+import AlertItem from '@components/Alert';
 
 class Notifier {
   notifySecondary = (message) => {
@@ -35,4 +35,6 @@ class Notifier {
   };
 }
 
-export const notifier = new Notifier();
+const notifier = new Notifier();
+
+export default notifier;

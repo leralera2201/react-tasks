@@ -1,7 +1,7 @@
-import React from "react";
-import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
+import React from 'react';
+import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 
-import "./BooksPagination.scss";
+import './BooksPagination.scss';
 
 const BooksPagination = ({ pages, onPaginate, currentPage }) => {
   const paginatePrev = () => {
@@ -27,7 +27,7 @@ const BooksPagination = ({ pages, onPaginate, currentPage }) => {
       </PaginationItem>
       {pages.map((page) => (
         <PaginationItem key={page} onClick={() => onPaginate(page)}>
-          <PaginationLink className={currentPage === page ? "active-page" : ""}>
+          <PaginationLink className={currentPage === page ? 'active-page' : ''}>
             {page}
           </PaginationLink>
         </PaginationItem>

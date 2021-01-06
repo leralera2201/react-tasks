@@ -2,31 +2,31 @@
 
 exports[`Books render books 1`] = `
 <div
-  className="pt-5"
+  className='pt-5'
 >
   <div
-    className="container"
+    className='container'
   >
     <Button
-      color="secondary"
-      id="create-button"
+      color='secondary'
+      id='create-button'
       onClick={[Function]}
-      tag="button"
+      tag='button'
     >
       Create book
     </Button>
     <div
-      className="flex-space-between"
+      className='flex-space-between'
     >
       <BookCard
         book={
           Object {
-            "description": "d",
-            "id": "d",
-            "title": "d",
+            'description': 'd',
+            'id': 'd',
+            'title': 'd',
           }
         }
-        key="d"
+        key='d'
       />
     </div>
     <BooksPagination
@@ -35,7 +35,7 @@ exports[`Books render books 1`] = `
       pages={Array []}
     />
     <div
-      id="no-books"
+      id='no-books'
     >
       No books
     </div>
@@ -45,21 +45,21 @@ exports[`Books render books 1`] = `
 
 exports[`Books render no books 1`] = `
 <div
-  className="pt-5"
+  className='pt-5'
 >
   <div
-    className="container"
+    className='container'
   >
     <Button
-      color="secondary"
-      id="create-button"
+      color='secondary'
+      id='create-button'
       onClick={[Function]}
-      tag="button"
+      tag='button'
     >
       Create book
     </Button>
     <div
-      id="no-books"
+      id='no-books'
     >
       No books
     </div>
@@ -69,21 +69,21 @@ exports[`Books render no books 1`] = `
 
 exports[`Books render with error 1`] = `
 <div
-  className="pt-5"
+  className='pt-5'
 >
   <div
-    className="container"
+    className='container'
   >
     <Button
-      color="secondary"
-      id="create-button"
+      color='secondary'
+      id='create-button'
       onClick={[Function]}
-      tag="button"
+      tag='button'
     >
       Create book
     </Button>
     <Error
-      error="Some error"
+      error='Some error'
     />
   </div>
 </div>
@@ -91,16 +91,16 @@ exports[`Books render with error 1`] = `
 
 exports[`Books render with loading 1`] = `
 <div
-  className="pt-5"
+  className='pt-5'
 >
   <div
-    className="container"
+    className='container'
   >
     <Button
-      color="secondary"
-      id="create-button"
+      color='secondary'
+      id='create-button'
       onClick={[Function]}
-      tag="button"
+      tag='button'
     >
       Create book
     </Button>

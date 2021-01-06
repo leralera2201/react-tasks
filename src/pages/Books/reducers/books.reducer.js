@@ -1,8 +1,8 @@
-import { ACTION_STATUS } from "../../../store/action-types";
+import { ACTION_STATUS } from '../../../store/action-types';
 
-import { BOOK_ACTION_TYPES } from "../../Book/action-types/book.action-types";
+import BOOK_ACTION_TYPES from '../../Book/action-types/book.action-types';
 
-import { BOOKS_ACTION_TYPES } from "../action-types/books.action-types";
+import BOOKS_ACTION_TYPES from '../action-types/books.action-types';
 
 const initialState = {
   item: {
@@ -92,7 +92,7 @@ const BooksReducer = (state = initialState, action) => {
       const { books } = data;
       const { book } = action.payload;
       const bookToUpdateIndex = books.findIndex(
-        (bookItem) => bookItem.id === book.id
+        (bookItem) => bookItem.id === book.id,
       );
       if (bookToUpdateIndex >= 0) {
         books[bookToUpdateIndex] = book;

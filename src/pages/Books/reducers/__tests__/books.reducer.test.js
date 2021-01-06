@@ -1,10 +1,10 @@
-import { ACTION_STATUS } from "../../../../store/action-types";
+import { ACTION_STATUS } from '../../../../store/action-types';
 
-import { BOOK_ACTION_TYPES } from "../../../Book/action-types/book.action-types";
+import { BOOK_ACTION_TYPES } from '../../../Book/action-types/book.action-types';
 
-import { BOOKS_ACTION_TYPES } from "../../action-types/books.action-types";
+import { BOOKS_ACTION_TYPES } from '../../action-types/books.action-types';
 
-import BooksReducer from "../books.reducer";
+import BooksReducer from '../books.reducer';
 
 const initialState = {
   item: {
@@ -19,25 +19,25 @@ const initialState = {
   },
 };
 
-describe("books reducer", () => {
+describe('books reducer', () => {
   const books = [
     {
-      title: "d",
-      description: "d",
-      excerpt: "d",
-      publishDate: "2000-20-20",
+      title: 'd',
+      description: 'd',
+      excerpt: 'd',
+      publishDate: '2000-20-20',
       pageCount: 2,
-      id: "1",
+      id: '1',
     },
   ];
-  const error = "Some error";
+  const error = 'Some error';
   const page = 1;
 
-  it("returns the initial state", () => {
+  it('returns the initial state', () => {
     expect(BooksReducer(undefined, {})).toEqual(initialState);
   });
 
-  it("fetch books in progress", () => {
+  it('fetch books in progress', () => {
     expect(
       BooksReducer(initialState, {
         type: BOOKS_ACTION_TYPES.BOOKS_FETCH.IN_PROGRESS,
@@ -51,7 +51,7 @@ describe("books reducer", () => {
     });
   });
 
-  it("fetch books success", () => {
+  it('fetch books success', () => {
     expect(
       BooksReducer(initialState, {
         type: BOOKS_ACTION_TYPES.BOOKS_FETCH.SUCCESS,
@@ -70,7 +70,7 @@ describe("books reducer", () => {
     });
   });
 
-  it("fetch books error", () => {
+  it('fetch books error', () => {
     expect(
       BooksReducer(initialState, {
         type: BOOKS_ACTION_TYPES.BOOKS_FETCH.ERROR,
@@ -87,7 +87,7 @@ describe("books reducer", () => {
     });
   });
 
-  it("books paginate", () => {
+  it('books paginate', () => {
     const { data } = initialState.item;
     const { booksPerPage, books } = initialState.item.data;
     const indexOfLastBook = page * booksPerPage;
@@ -111,7 +111,7 @@ describe("books reducer", () => {
     });
   });
 
-  it("create book success", () => {
+  it('create book success', () => {
     const { data } = initialState.item;
     expect(
       BooksReducer(initialState, {
@@ -130,7 +130,7 @@ describe("books reducer", () => {
     });
   });
 
-  it("update book success", () => {
+  it('update book success', () => {
     const { data } = initialState.item;
     const book = books[0];
     const { books: oldBooks } = data;
@@ -158,7 +158,7 @@ describe("books reducer", () => {
     });
   });
 
-  it("delete book success", () => {
+  it('delete book success', () => {
     const { data } = initialState.item;
     const { id } = books[0];
     const oldBooks = data.books.filter((book) => book.id !== id);

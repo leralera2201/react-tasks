@@ -2,23 +2,23 @@
 
 exports[`Home renders correctly 1`] = `
 <div
-  className="container pt-5"
+  className='container pt-5'
 >
   <Jumbotron
     fluid={true}
-    tag="div"
+    tag='div'
   >
     <Container
       fluid={true}
-      tag="div"
+      tag='div'
     >
       <h1
-        className="display-3"
+        className='display-3'
       >
         Fluid jumbotron
       </h1>
       <p
-        className="lead"
+        className='lead'
       >
         This is a modified jumbotron that occupies the entire horizontal space of its parent.
       </p>

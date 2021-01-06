@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Button,
   Card,
@@ -6,19 +6,19 @@ import {
   CardSubtitle,
   CardText,
   CardTitle,
-} from "reactstrap";
-import { connect } from "react-redux";
-import moment from "moment";
+} from 'reactstrap';
+import { connect } from 'react-redux';
+import moment from 'moment';
 
-import { Loader, Error } from "@components";
+import { Loader, Error } from '@components';
 
-import { deleteBookStart, fetchBookStart } from "./actions/book.actions";
+import { deleteBookStart, fetchBookStart } from './actions/book.actions';
 import {
   bookDeleteIsStatusSuccess,
   bookFetchDataSelector,
   bookFetchErrorSelector,
   bookFetchIsStatusInProgress,
-} from "./selectors/book.selectors";
+} from './selectors/book.selectors';
 
 export class Book extends Component {
   componentDidMount() {
@@ -33,11 +33,11 @@ export class Book extends Component {
 
   deleteBook = (id) => {
     const { deleteBook, history } = this.props;
-    const confirmation = window.confirm("Are you sure?");
+    const confirmation = window.confirm('Are you sure?');
     if (confirmation) {
       deleteBook(id);
       history.push({
-        pathname: "/books",
+        pathname: '/books',
         state: { withoutFetch: true },
       });
     }
@@ -65,7 +65,10 @@ export class Book extends Component {
                 {book.description}
               </CardSubtitle>
               <CardText>{book.excerpt}</CardText>
-              <CardText tag="h5">Page count: {book.pageCount}</CardText>
+              <CardText tag="h5">
+                Page count:
+                {book.pageCount}
+              </CardText>
               <CardText>
                 <small className="text-muted">
                   {moment(book.publishDate).fromNow()}

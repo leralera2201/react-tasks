@@ -1,14 +1,14 @@
-import { getBooks } from "@api/books";
-import { notifier } from "../../../helpers/Notifier";
+import { getBooks } from '@api/books';
+import notifier from '../../../helpers/Notifier';
 
 import {
   fetchBooksError,
   fetchBooksInProgress,
   fetchBooksSuccess,
   paginateBooks,
-} from "../actions/books.actions";
+} from '../actions/books.actions';
 
-export const fetchBooks = () => (dispatch) => {
+const fetchBooks = () => (dispatch) => {
   dispatch(fetchBooksInProgress());
   return getBooks()
     .then((data) => {
@@ -17,6 +17,8 @@ export const fetchBooks = () => (dispatch) => {
     })
     .catch((e) => {
       dispatch(fetchBooksError(e));
-      notifier.notifyError("Something went wrong");
+      notifier.notifyError('Something went wrong');
     });
 };
+
+export default fetchBooks;

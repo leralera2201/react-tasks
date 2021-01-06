@@ -1,4 +1,4 @@
-import { BOOK_ACTION_TYPES } from "../action-types/book.action-types";
+import BOOK_ACTION_TYPES from '../action-types/book.action-types';
 
 export const fetchBookStart = (id) => ({
   type: BOOK_ACTION_TYPES.BOOK_FETCH.START,

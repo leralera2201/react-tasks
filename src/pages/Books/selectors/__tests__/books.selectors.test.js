@@ -1,9 +1,9 @@
-import configureMockStore from "redux-mock-store";
-import thunk from "redux-thunk";
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 
-import { ACTION_STATUS } from "../../../../store/action-types";
+import { ACTION_STATUS } from '../../../../store/action-types';
 
-import * as selectors from "../books.selectors";
+import * as selectors from '../books.selectors';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -25,26 +25,26 @@ const initialState = {
   },
 };
 
-describe("books selectors", () => {
+describe('books selectors', () => {
   let store;
 
   beforeEach(() => {
     store = mockStore(initialState);
   });
 
-  it("returns bookRoot from the state", () => {
+  it('returns bookRoot from the state', () => {
     const { bookRoot } = initialState;
     expect(selectors.bookRootStateSelector(store.getState())).toEqual(bookRoot);
   });
 
-  it("returns books from the state", () => {
+  it('returns books from the state', () => {
     const {
       bookRoot: { books },
     } = initialState;
     expect(selectors.booksStateSelector(store.getState())).toEqual(books);
   });
 
-  it("returns item from the state", () => {
+  it('returns item from the state', () => {
     const {
       bookRoot: {
         books: { item },
@@ -53,7 +53,7 @@ describe("books selectors", () => {
     expect(selectors.booksFetchSelector(store.getState())).toEqual(item);
   });
 
-  it("returns item data from the state", () => {
+  it('returns item data from the state', () => {
     const {
       bookRoot: {
         books: {
@@ -64,7 +64,7 @@ describe("books selectors", () => {
     expect(selectors.booksFetchDataSelector(store.getState())).toEqual(data);
   });
 
-  it("returns item status from the state", () => {
+  it('returns item status from the state', () => {
     const {
       bookRoot: {
         books: {
@@ -77,7 +77,7 @@ describe("books selectors", () => {
     );
   });
 
-  it("returns item error from the state", () => {
+  it('returns item error from the state', () => {
     const {
       bookRoot: {
         books: {
@@ -88,7 +88,7 @@ describe("books selectors", () => {
     expect(selectors.booksFetchErrorSelector(store.getState())).toEqual(error);
   });
 
-  it("returns item data books from the state", () => {
+  it('returns item data books from the state', () => {
     const {
       bookRoot: {
         books: {
@@ -101,7 +101,7 @@ describe("books selectors", () => {
     expect(selectors.booksFetchItemsSelector(store.getState())).toEqual(books);
   });
 
-  it("returns current books from the state", () => {
+  it('returns current books from the state', () => {
     const {
       bookRoot: {
         books: {
@@ -116,7 +116,7 @@ describe("books selectors", () => {
     );
   });
 
-  it("returns current page from the state", () => {
+  it('returns current page from the state', () => {
     const {
       bookRoot: {
         books: {
@@ -131,7 +131,7 @@ describe("books selectors", () => {
     );
   });
 
-  it("returns current books per page from the state", () => {
+  it('returns current books per page from the state', () => {
     const {
       bookRoot: {
         books: {
@@ -146,7 +146,7 @@ describe("books selectors", () => {
     ).toEqual(booksPerPage);
   });
 
-  it("returns is status loading from the state", () => {
+  it('returns is status loading from the state', () => {
     const {
       bookRoot: {
         books: {

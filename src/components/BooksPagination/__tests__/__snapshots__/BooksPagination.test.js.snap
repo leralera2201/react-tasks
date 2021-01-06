@@ -2,66 +2,66 @@
 
 exports[`Testing BooksPagination component renders correctly 1`] = `
 <Pagination
-  aria-label="pagination"
-  listTag="ul"
-  tag="nav"
+  aria-label='pagination'
+  listTag='ul'
+  tag='nav'
 >
   <PaginationItem
     disabled={true}
-    id="paginate-prev"
+    id='paginate-prev'
     onClick={[Function]}
-    tag="li"
+    tag='li'
   >
     <PaginationLink
       previous={true}
-      tag="a"
+      tag='a'
     />
   </PaginationItem>
   <PaginationItem
-    key="1"
+    key='1'
     onClick={[Function]}
-    tag="li"
+    tag='li'
   >
     <PaginationLink
-      className="active-page"
-      tag="a"
+      className='active-page'
+      tag='a'
     >
       1
     </PaginationLink>
   </PaginationItem>
   <PaginationItem
-    key="2"
+    key='2'
     onClick={[Function]}
-    tag="li"
+    tag='li'
   >
     <PaginationLink
-      className=""
-      tag="a"
+      className=''
+      tag='a'
     >
       2
     </PaginationLink>
   </PaginationItem>
   <PaginationItem
-    key="3"
+    key='3'
     onClick={[Function]}
-    tag="li"
+    tag='li'
   >
     <PaginationLink
-      className=""
-      tag="a"
+      className=''
+      tag='a'
     >
       3
     </PaginationLink>
   </PaginationItem>
   <PaginationItem
     disabled={false}
-    id="paginate-next"
+    id='paginate-next'
     onClick={[Function]}
-    tag="li"
+    tag='li'
   >
     <PaginationLink
       next={true}
-      tag="a"
+      tag='a'
     />
   </PaginationItem>
 </Pagination>
