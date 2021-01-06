@@ -12,15 +12,17 @@ import {
   booksFetchItemsSelector,
   booksFetchCurrentPageSelector,
   booksFetchBooksPerPagePageSelector,
-  booksFetchCurrentItemsSelector
+  booksFetchCurrentItemsSelector,
 } from "./selectors/books.selectors";
 import { fetchBooks } from "./thunks/books.thunks";
 
 export class Books extends Component {
-
   componentDidMount() {
-    const { getAllBooks, location: {state} } = this.props;
-    if(state && state.withoutFetch) {
+    const {
+      getAllBooks,
+      location: { state },
+    } = this.props;
+    if (state && state.withoutFetch) {
       return;
     }
     getAllBooks();
@@ -28,8 +30,8 @@ export class Books extends Component {
 
   createBook = () => {
     const { history } = this.props;
-    history.push('/books/create');
-  }
+    history.push("/books/create");
+  };
 
   render() {
     const {
@@ -56,8 +58,8 @@ export class Books extends Component {
           <Button onClick={this.createBook} id="create-button">
             Create book
           </Button>
-        {loading && <Loader />}
-        {!loading && !error && currentBooks.length > 0 && (
+          {loading && <Loader />}
+          {!loading && !error && currentBooks.length > 0 && (
             <>
               <div className="flex-space-between">
                 {currentBooks.map((book) => (
@@ -70,9 +72,11 @@ export class Books extends Component {
                 pages={pages}
               />
             </>
-        )}
-        {!error && !loading && booksLength === 0 && <div id="no-books">No books</div>}
-        {error && <Error error={error} />}
+          )}
+          {!error && !loading && booksLength === 0 && (
+            <div id="no-books">No books</div>
+          )}
+          {error && <Error error={error} />}
         </div>
       </div>
     );
@@ -90,7 +94,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   paginate: (page) => dispatch(paginateBooks(page)),
-  getAllBooks: () => dispatch(fetchBooks())
+  getAllBooks: () => dispatch(fetchBooks()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Books);

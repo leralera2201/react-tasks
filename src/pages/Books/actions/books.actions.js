@@ -1,7 +1,7 @@
 import { BOOKS_ACTION_TYPES } from "../action-types/books.action-types";
 
 export const fetchBooksStart = () => ({
-  type: BOOKS_ACTION_TYPES.BOOKS_FETCH.START
+  type: BOOKS_ACTION_TYPES.BOOKS_FETCH.START,
 });
 
 export const fetchBooksInProgress = () => ({
@@ -10,7 +10,7 @@ export const fetchBooksInProgress = () => ({
 
 export const fetchBooksSuccess = (books) => ({
   type: BOOKS_ACTION_TYPES.BOOKS_FETCH.SUCCESS,
-  payload: {books},
+  payload: { books },
 });
 
 export const fetchBooksError = (error) => ({

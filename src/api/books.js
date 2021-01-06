@@ -1,14 +1,14 @@
 import client from "./client";
 
 /**
-* @typedef {Object} Book
+ * @typedef {Object} Book
  * @property {number} id
  * @property {string} [title]
  * @property {string} [description]
  * @property {number} [pageCount]
  * @property {string} [excerpt]
  * @property {string} [publishDate]
-*/
+ */
 
 /**
  * fetch books
@@ -31,7 +31,7 @@ export const getBook = (id) => client.get(`/Books/${id}`);
  * @param {Book} book
  * @returns {Promise}
  */
-export const createBook = (book) => client.post('/Books', book);
+export const createBook = (book) => client.post("/Books", book);
 
 /**
  * update book

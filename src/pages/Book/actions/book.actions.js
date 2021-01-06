@@ -1,8 +1,8 @@
-import { BOOK_ACTION_TYPES } from '../action-types/book.action-types';
+import { BOOK_ACTION_TYPES } from "../action-types/book.action-types";
 
 export const fetchBookStart = (id) => ({
   type: BOOK_ACTION_TYPES.BOOK_FETCH.START,
-  payload: { id }
+  payload: { id },
 });
 
 export const fetchBookInProgress = () => ({
@@ -11,7 +11,7 @@ export const fetchBookInProgress = () => ({
 
 export const fetchBookSuccess = (book) => ({
   type: BOOK_ACTION_TYPES.BOOK_FETCH.SUCCESS,
-  payload: {book},
+  payload: { book },
 });
 
 export const fetchBookError = (error) => ({
@@ -35,7 +35,7 @@ export const createBookSuccess = (book) => ({
 
 export const createBookError = (error) => ({
   type: BOOK_ACTION_TYPES.BOOK_CREATE.ERROR,
-  payload: error ,
+  payload: error,
 });
 
 export const updateBookStart = (book) => ({
@@ -54,7 +54,7 @@ export const updateBookSuccess = (book) => ({
 
 export const updateBookError = (error) => ({
   type: BOOK_ACTION_TYPES.BOOK_UPDATE.ERROR,
-  payload: error ,
+  payload: error,
 });
 
 export const deleteBookStart = (id) => ({
@@ -73,5 +73,5 @@ export const deleteBookSuccess = (id) => ({
 
 export const deleteBookError = (error) => ({
   type: BOOK_ACTION_TYPES.BOOK_DELETE.ERROR,
-  payload: error ,
+  payload: error,
 });

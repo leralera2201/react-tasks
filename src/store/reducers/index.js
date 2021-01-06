@@ -6,10 +6,10 @@ import BookReducer from "../../pages/Book/reducers/book.reducer";
 const bookRoot = combineReducers({
   books: BooksReducer,
   book: BookReducer,
-})
+});
 
 const rootReducer = combineReducers({
-  bookRoot
+  bookRoot,
 });
 
 export default rootReducer;

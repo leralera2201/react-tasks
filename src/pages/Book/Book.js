@@ -1,18 +1,24 @@
 import React, { Component } from "react";
-import {Button, Card, CardBody, CardSubtitle, CardText, CardTitle} from "reactstrap";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardSubtitle,
+  CardText,
+  CardTitle,
+} from "reactstrap";
 import { connect } from "react-redux";
 import moment from "moment";
 
 import { Loader, Error } from "@components";
 
-import {deleteBookStart, fetchBookStart} from "./actions/book.actions";
+import { deleteBookStart, fetchBookStart } from "./actions/book.actions";
 import {
   bookDeleteIsStatusSuccess,
   bookFetchDataSelector,
   bookFetchErrorSelector,
-  bookFetchIsStatusInProgress
+  bookFetchIsStatusInProgress,
 } from "./selectors/book.selectors";
-
 
 export class Book extends Component {
   componentDidMount() {
@@ -25,26 +31,25 @@ export class Book extends Component {
     getBookById(id);
   }
 
-
-  deleteBook = id => {
+  deleteBook = (id) => {
     const { deleteBook, history } = this.props;
-    const confirmation = window.confirm('Are you sure?');
-    if(confirmation){
+    const confirmation = window.confirm("Are you sure?");
+    if (confirmation) {
       deleteBook(id);
       history.push({
-        pathname: '/books',
-        state: { withoutFetch: true }
+        pathname: "/books",
+        state: { withoutFetch: true },
       });
     }
-  }
+  };
 
-  updateBook = id => {
+  updateBook = (id) => {
     const { book, history } = this.props;
     history.push({
       pathname: `/books/${id}/update`,
-      state: { book }
+      state: { book },
     });
-  }
+  };
 
   render() {
     const { loading, book, error } = this.props;
@@ -86,12 +91,12 @@ const mapStateToProps = (state) => ({
   book: bookFetchDataSelector(state),
   loading: bookFetchIsStatusInProgress(state),
   error: bookFetchErrorSelector(state),
-  deleteSuccess: bookDeleteIsStatusSuccess(state)
+  deleteSuccess: bookDeleteIsStatusSuccess(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getBookById: (id) => dispatch(fetchBookStart(id)),
-  deleteBook: (id) => dispatch(deleteBookStart(id))
+  deleteBook: (id) => dispatch(deleteBookStart(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Book);

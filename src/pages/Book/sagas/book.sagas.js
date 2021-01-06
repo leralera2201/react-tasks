@@ -1,7 +1,7 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put } from "redux-saga/effects";
 
-import { createBook, deleteBook, getBook, updateBook } from '@api/books';
-import { notifier } from '../../../helpers/Notifier';
+import { createBook, deleteBook, getBook, updateBook } from "@api/books";
+import { notifier } from "../../../helpers/Notifier";
 
 import {
   fetchBookInProgress,
@@ -16,8 +16,8 @@ import {
   deleteBookInProgress,
   deleteBookSuccess,
   deleteBookError,
-} from '../actions/book.actions';
-import { BOOK_ACTION_TYPES } from '../action-types/book.action-types';
+} from "../actions/book.actions";
+import { BOOK_ACTION_TYPES } from "../action-types/book.action-types";
 
 export function* bookFetchSaga({ payload: { id } }) {
   try {
@@ -25,7 +25,7 @@ export function* bookFetchSaga({ payload: { id } }) {
     const data = yield call(getBook, id);
     yield put(fetchBookSuccess(data));
   } catch (e) {
-    yield put(fetchBookError('Something went wrong. Try again'));
+    yield put(fetchBookError("Something went wrong. Try again"));
   }
 }
 
@@ -40,7 +40,7 @@ export function* bookCreateSaga({ payload: { book } }) {
     yield put(createBookSuccess(data));
     // notifier.notifySuccess('Book was created successfully!');
   } catch (e) {
-    yield put(createBookError('Something went wrong. Try again'));
+    yield put(createBookError("Something went wrong. Try again"));
     // notifier.notifyError('Something went wrong.');
   }
 }
@@ -56,7 +56,7 @@ export function* bookUpdateSaga({ payload: { book } }) {
     yield put(updateBookSuccess(data));
     // notifier.notifySuccess('Book was updated successfully!');
   } catch (e) {
-    yield put(updateBookError('Something went wrong. Try again'));
+    yield put(updateBookError("Something went wrong. Try again"));
     // notifier.notifyError('Something went wrong.');
   }
 }
@@ -72,7 +72,7 @@ export function* bookDeleteSaga({ payload: { id } }) {
     yield put(deleteBookSuccess(data));
     // notifier.notifySuccess('Book was deleted successfully!');
   } catch (e) {
-    yield put(deleteBookError('Something went wrong. Try again'));
+    yield put(deleteBookError("Something went wrong. Try again"));
     // notifier.notifyError('Something went wrong.');
   }
 }

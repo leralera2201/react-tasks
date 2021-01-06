@@ -1,6 +1,6 @@
-import {ACTION_STATUS} from "../../../store/action-types";
+import { ACTION_STATUS } from "../../../store/action-types";
 
-import {BOOK_ACTION_TYPES} from "../../Book/action-types/book.action-types";
+import { BOOK_ACTION_TYPES } from "../../Book/action-types/book.action-types";
 
 import { BOOKS_ACTION_TYPES } from "../action-types/books.action-types";
 
@@ -13,7 +13,7 @@ const initialState = {
       booksPerPage: 20,
     },
     status: ACTION_STATUS.NOT_STARTED,
-    error: null
+    error: null,
   },
 };
 
@@ -24,8 +24,8 @@ const BooksReducer = (state = initialState, action) => {
         ...state,
         item: {
           ...state.item,
-          status: ACTION_STATUS.IN_PROGRESS
-        }
+          status: ACTION_STATUS.IN_PROGRESS,
+        },
       };
     }
     case BOOKS_ACTION_TYPES.BOOKS_FETCH.SUCCESS: {
@@ -37,10 +37,10 @@ const BooksReducer = (state = initialState, action) => {
           ...state.item,
           data: {
             ...data,
-            books
+            books,
           },
-          status: ACTION_STATUS.SUCCESS
-        }
+          status: ACTION_STATUS.SUCCESS,
+        },
       };
     }
     case BOOKS_ACTION_TYPES.BOOKS_FETCH.ERROR: {
@@ -50,8 +50,8 @@ const BooksReducer = (state = initialState, action) => {
           ...state.item,
           data: null,
           status: ACTION_STATUS.ERROR,
-          error: action.payload
-        }
+          error: action.payload,
+        },
       };
     }
     case BOOKS_ACTION_TYPES.BOOKS_PAGINATE: {
@@ -68,10 +68,10 @@ const BooksReducer = (state = initialState, action) => {
           data: {
             ...data,
             currentBooks,
-            currentPage: page
-          }
-        }
-      }
+            currentPage: page,
+          },
+        },
+      };
     }
     case BOOK_ACTION_TYPES.BOOK_CREATE.SUCCESS: {
       const { data } = state.item;
@@ -82,46 +82,46 @@ const BooksReducer = (state = initialState, action) => {
           ...state.item,
           data: {
             ...data,
-            books: [
-              ...data.books,
-              book
-            ]
-          }
-        }
+            books: [...data.books, book],
+          },
+        },
       };
     }
     case BOOK_ACTION_TYPES.BOOK_UPDATE.SUCCESS: {
       const { data } = state.item;
       const { books } = data;
       const { book } = action.payload;
-      const bookToUpdateIndex = books.findIndex(bookItem => bookItem.id === book.id);
-      if(bookToUpdateIndex >= 0) {
+      const bookToUpdateIndex = books.findIndex(
+        (bookItem) => bookItem.id === book.id
+      );
+      if (bookToUpdateIndex >= 0) {
         books[bookToUpdateIndex] = book;
-      };
+      }
       const item = {
         ...state.item,
-          data: {
+        data: {
           ...data,
-            books
-          }
-      }
+          books,
+        },
+      };
       return {
-        ...state, item
+        ...state,
+        item,
       };
     }
     case BOOK_ACTION_TYPES.BOOK_DELETE.SUCCESS: {
       const { data } = state.item;
       const { id } = action.payload;
-      const books = data.books.filter(book => book.id !== id);
+      const books = data.books.filter((book) => book.id !== id);
       return {
         ...state,
         item: {
           ...state.item,
           data: {
             ...data,
-            books
-          }
-        }
+            books,
+          },
+        },
       };
     }
     default:

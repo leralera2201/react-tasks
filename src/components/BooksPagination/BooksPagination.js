@@ -1,24 +1,28 @@
 import React from "react";
 import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 
-import './BooksPagination.scss';
+import "./BooksPagination.scss";
 
 const BooksPagination = ({ pages, onPaginate, currentPage }) => {
   const paginatePrev = () => {
     if (currentPage !== 1) {
-        onPaginate(currentPage - 1);
+      onPaginate(currentPage - 1);
     }
   };
 
   const paginateNext = () => {
     if (currentPage !== pages.length) {
-        onPaginate(currentPage + 1);
+      onPaginate(currentPage + 1);
     }
   };
 
   return (
     <Pagination>
-      <PaginationItem disabled={currentPage === 1} onClick={paginatePrev} id="paginate-prev">
+      <PaginationItem
+        disabled={currentPage === 1}
+        onClick={paginatePrev}
+        id="paginate-prev"
+      >
         <PaginationLink previous />
       </PaginationItem>
       {pages.map((page) => (
@@ -29,7 +33,7 @@ const BooksPagination = ({ pages, onPaginate, currentPage }) => {
         </PaginationItem>
       ))}
       <PaginationItem
-          id="paginate-next"
+        id="paginate-next"
         disabled={currentPage === pages.length}
         onClick={paginateNext}
       >

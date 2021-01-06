@@ -1,55 +1,55 @@
 import { createSelector } from "reselect";
 
-import { ACTION_STATUS } from '../../../store/action-types';
+import { ACTION_STATUS } from "../../../store/action-types";
 
 export const bookRootStateSelector = (state) => state.bookRoot;
 
 export const booksStateSelector = createSelector(
-    bookRootStateSelector,
-    ({ books }) => books
+  bookRootStateSelector,
+  ({ books }) => books
 );
 
 export const booksFetchSelector = createSelector(
-    booksStateSelector,
-    ({ item }) => item
+  booksStateSelector,
+  ({ item }) => item
 );
 
 export const booksFetchDataSelector = createSelector(
-    booksFetchSelector,
-    ({ data }) => data
+  booksFetchSelector,
+  ({ data }) => data
 );
 
 export const booksFetchStatusSelector = createSelector(
-    booksFetchSelector,
-    ({ status }) => status
+  booksFetchSelector,
+  ({ status }) => status
 );
 
 export const booksFetchErrorSelector = createSelector(
-    booksFetchSelector,
-    ({ error }) => error
+  booksFetchSelector,
+  ({ error }) => error
 );
 
 export const booksFetchItemsSelector = createSelector(
-    booksFetchDataSelector,
-    ({ books }) => books
+  booksFetchDataSelector,
+  ({ books }) => books
 );
 
 export const booksFetchCurrentItemsSelector = createSelector(
-    booksFetchDataSelector,
-    ({ currentBooks }) => currentBooks
+  booksFetchDataSelector,
+  ({ currentBooks }) => currentBooks
 );
 
 export const booksFetchCurrentPageSelector = createSelector(
-    booksFetchDataSelector,
-    ({ currentPage }) => currentPage
+  booksFetchDataSelector,
+  ({ currentPage }) => currentPage
 );
 
 export const booksFetchBooksPerPagePageSelector = createSelector(
-    booksFetchDataSelector,
-    ({ booksPerPage }) => booksPerPage
+  booksFetchDataSelector,
+  ({ booksPerPage }) => booksPerPage
 );
 
 export const booksFetchIsStatusInProgress = createSelector(
-    booksFetchStatusSelector,
-    ( status ) => status === ACTION_STATUS.IN_PROGRESS
+  booksFetchStatusSelector,
+  (status) => status === ACTION_STATUS.IN_PROGRESS
 );
