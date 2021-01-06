@@ -8,6 +8,11 @@ import Typography from "./pages/Typography";
 import Dropdown from "./pages/Dropdown";
 import Select from "./pages/Select";
 import Alert from "./pages/Alert";
+import SwitchPage from "./pages/Switch";
+import Spin from "./pages/Spin";
+import Progress from "./pages/Progress";
+import Modal from "./pages/Modal";
+import Notification from "./pages/Notification";
 
 
 function App() {
@@ -20,6 +25,11 @@ function App() {
             <Route path="/dropdown" exact component={Dropdown}/>
             <Route path="/select" exact component={Select}/>
             <Route path="/alert" exact component={Alert}/>
+            <Route path="/switch" exact component={SwitchPage}/>
+            <Route path="/spin" exact component={Spin}/>
+            <Route path="/progress" exact component={Progress}/>
+            <Route path="/modal" exact component={Modal}/>
+            <Route path="/notification" exact component={Notification}/>
         </Switch>
     </div>
   );

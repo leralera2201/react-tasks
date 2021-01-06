@@ -1,6 +1,5 @@
+import React from 'react';
 import { Select } from 'antd';
-import BackgroundSelect from "../../wrappers/Select/Background";
-import ColoredOption from "../../wrappers/Select/Option";
 
 const { Option } = Select;
 
@@ -8,15 +7,17 @@ function handleChange(value) {
     console.log(`selected ${value}`);
 }
 
-const SelectItem = () => {
+const SelectItem = ({wrapper, optionWrapper, ...other}) => {
+    const Component = wrapper || Select
+    const OptionComponent = optionWrapper || Option
     return <>
-        <BackgroundSelect defaultValue="lucy" onChange={handleChange}>
-            <ColoredOption value="jack">Jack</ColoredOption>
-            <ColoredOption value="lucy">Lucy</ColoredOption>
-            <ColoredOption value="disabled" disabled>
+        <Component defaultValue="lucy" onChange={handleChange} {...other}>
+            <OptionComponent value="jack">Jack</OptionComponent>
+            <OptionComponent value="lucy">Lucy</OptionComponent>
+            <OptionComponent value="disabled" disabled>
                 Disabled
-            </ColoredOption>
-        </BackgroundSelect>
+            </OptionComponent>
+        </Component>
     </>
 }
 

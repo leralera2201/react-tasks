@@ -2,53 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84324715-7050-4382-ba7b-75ce006ef66f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/env.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/getHttpsConfig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/jest/cssTransform.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/jest/fileTransform.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/modules.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/paths.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/pnpTs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/webpack.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/webpackDevServer.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/build.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/start.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Button/Button.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Button/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dropdown/Dropdown.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dropdown/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Select/Select.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Select/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Typography/Typography.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Typography/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Buttons/Danger/DangerButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Buttons/Danger/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Buttons/Dashed/DashedButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Buttons/Dashed/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Buttons/Primary/PrimaryButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Buttons/Primary/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Dropdown/Colored/ColoredDropdown.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Dropdown/Colored/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Dropdown/Menu/BorderedMenu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Dropdown/Menu/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Select/Background/BackgroundSelect.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Select/Background/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Typography/Danger/DangerTypography.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Typography/Danger/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Typography/Success/SuccessTypography.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Typography/Success/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Typography/Warning/WarningTypography.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/wrappers/Typography/Warning/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Modal/Modal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Modal/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Notification/Notification.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Notification/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Switch/Switch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Switch/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Modal/Modal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Modal/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Notification/Notification.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Notification/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Progress/Progress.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Progress/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Spin/Spin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Spin/Spin.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Spin/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Switch/Switch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Switch/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wrappers/Modal/Positioned/PositionedModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wrappers/Modal/Positioned/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wrappers/Progress/Colored/ColoredProgress.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wrappers/Progress/Colored/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wrappers/Progress/ProgressSize/ProgressSize.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wrappers/Progress/ProgressSize/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wrappers/Select/SelectSize/SelectSize.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wrappers/Spin/SpinSize/SpinSize.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wrappers/Spin/SpinSize/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wrappers/Switch/Colored/ColoredSwitch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wrappers/Switch/Colored/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Select/Select.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Select/Select.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Select/Select.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Select/Select.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wrappers/Select/Background/BackgroundSelect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wrappers/Select/Background/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wrappers/Select/SelectSize/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wrappers/Select/Option/ColoredOption.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/wrappers/Select/Option/ColoredOption.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +74,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609855783674</updated>
-      <workItem from="1609855784764" duration="7113000" />
+      <workItem from="1609855784764" duration="7394000" />
+      <workItem from="1609926664075" duration="11473000" />
     </task>
     <servers />
   </component>
@@ -99,5 +92,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
