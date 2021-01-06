@@ -1,11 +1,11 @@
-import React from 'react';
-
-function onChange(checked) {
-    console.log(`switch to ${checked}`);
-}
+import { Switch } from 'antd';
 
 const SwitchItem = ({wrapper, color}) => {
-    const ComponentWrapper = wrapper;
+    const ComponentWrapper = wrapper || Switch;
+
+    const onChange = (checked) => {
+        console.log(`switch to ${checked}`);
+    }
     return (
         <ComponentWrapper defaultChecked onChange={onChange} color={color}/>
     );

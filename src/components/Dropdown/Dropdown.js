@@ -1,12 +1,9 @@
-import React from 'react';
-import { Menu } from 'antd';
+import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
-import ColoredDropdown from "../../wrappers/Dropdown/Colored";
-
-const DropdownItem = ({wrapper, colorWrapper}) => {
-    const Component = wrapper;
-    const ColorComponent = colorWrapper;
+const DropdownItem = ({wrapper, colorWrapper, ...other}) => {
+    const Component = wrapper || Menu;
+    const ColorComponent = colorWrapper || Dropdown;
     const menu = (<Component>
         <Menu.Item>
             <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/">
@@ -26,9 +23,9 @@ const DropdownItem = ({wrapper, colorWrapper}) => {
     </Component>
     );
     return (
-        <ColorComponent overlay={menu} trigger={['click']} color="black">
+        <ColorComponent overlay={menu} trigger={['click']} {...other}>
             <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                Hover me <DownOutlined />
+                Click me <DownOutlined />
             </a>
         </ColorComponent>
     );

@@ -1,11 +1,10 @@
-import React from 'react';
 import Modal from "@components/Modal";
 
 import PositionedModal from "../../wrappers/Modal/Positioned";
 
 const ModalPage = () => {
     return (
-        <div>
+        <>
             <div>
                 <Modal />
             </div>
@@ -25,7 +24,7 @@ const ModalPage = () => {
             <div>
                 <Modal wrapper={PositionedModal} horizontalCenter bottom/>
             </div>
-        </div>
+        </>
     );
 };
 
