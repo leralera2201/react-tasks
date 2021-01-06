@@ -1,1 +1,1 @@
-export { default } from './ColoredAlert';
+export { default } from "./ColoredAlert";

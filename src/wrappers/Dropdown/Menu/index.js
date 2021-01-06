@@ -1,1 +1,1 @@
-export { default } from './BorderedMenu';
+export { default } from "./BorderedMenu";

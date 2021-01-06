@@ -1,1 +1,1 @@
-export { default } from './SuccessTypography';
+export { default } from "./SuccessTypography";

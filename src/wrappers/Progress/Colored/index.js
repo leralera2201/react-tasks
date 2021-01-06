@@ -1,1 +1,1 @@
-export { default } from './ColoredProgress';
+export { default } from "./ColoredProgress";

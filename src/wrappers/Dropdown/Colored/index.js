@@ -1,1 +1,1 @@
-export { default } from './ColoredDropdown';
+export { default } from "./ColoredDropdown";

@@ -1,1 +1,1 @@
-export { default } from './PositionedModal';
+export { default } from "./PositionedModal";

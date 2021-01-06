@@ -1,1 +1,1 @@
-export { default } from './ColoredOption';
+export { default } from "./ColoredOption";

@@ -1,1 +1,1 @@
-export { default } from './DangerTypography';
+export { default } from "./DangerTypography";

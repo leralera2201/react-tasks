@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Button = styled.a`
   display: block;
@@ -11,6 +11,6 @@ const Button = styled.a`
   background: white;
   color: black;
   border: 1px solid black;
-`
+`;
 
 export default Button;

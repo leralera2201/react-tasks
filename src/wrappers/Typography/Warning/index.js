@@ -1,1 +1,1 @@
-export { default } from './WarningTypography';
+export { default } from "./WarningTypography";

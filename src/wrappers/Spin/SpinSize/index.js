@@ -1,1 +1,1 @@
-export { default } from './SpinSize';
+export { default } from "./SpinSize";

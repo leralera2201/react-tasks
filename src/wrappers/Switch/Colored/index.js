@@ -1,1 +1,1 @@
-export { default } from './ColoredSwitch';
+export { default } from "./ColoredSwitch";
