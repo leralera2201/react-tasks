@@ -1,0 +1,29 @@
+.text {
+  font-size: 24px;
+  color: black;
+  margin: 0;
+
+  &Small {
+    font-size: 16px;
+  }
+
+  &Medium {
+    font-size: 26px;
+  }
+
+  &Large {
+    font-size: 40px;
+  }
+
+  &Warning {
+    color: #c48607;
+  }
+
+  &Success {
+    color: #2c7c09;
+  }
+
+  &Danger {
+    color: #a50404;
+  }
+}

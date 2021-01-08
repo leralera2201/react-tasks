@@ -1,11 +1,9 @@
-import { Button, notification } from "antd";
-
-import ColoredAlert from "../../wrappers/Alert/ColoredAlert";
+import { Button, notification, Alert } from "antd";
 
 const openNotification = () => {
   notification.open({
     message: "Notification Title",
-    description: <ColoredAlert type="success" message="Some message" />,
+    description: <Alert type="success" message="Some message" />,
     duration: 0,
   });
 };

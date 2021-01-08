@@ -1,14 +1,14 @@
-import ColoredAlert from "../../wrappers/Alert/ColoredAlert";
+import Alert from "@components/Alert";
 
-const Alert = () => {
+const AlertPage = () => {
   return (
     <>
-      <ColoredAlert type="success" message="Success Alert" showIcon />
-      <ColoredAlert type="error" message="Error Alert" showIcon />
-      <ColoredAlert type="info" message="Info Alert" />
-      <ColoredAlert type="warning" message="Warning Alert" />
+      <Alert type="success" message="Success Alert" showIcon />
+      <Alert type="error" message="Error Alert" showIcon />
+      <Alert type="info" message="Info Alert" />
+      <Alert type="warning" message="Warning Alert" />
     </>
   );
 };
 
-export default Alert;
+export default AlertPage;

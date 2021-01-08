@@ -1,8 +1,5 @@
 import Select from "@components/Select";
 
-import SelectSize from "../../wrappers/Select/SelectSize";
-import ColoredOption from "../../wrappers/Select/Option";
-
 const SelectPage = () => {
   return (
     <>
@@ -11,11 +8,11 @@ const SelectPage = () => {
       </div>
       <br />
       <div>
-        <Select wrapper={SelectSize} large />
+        <Select size="large" />
       </div>
       <br />
       <div>
-        <Select wrapper={SelectSize} medium optionWrapper={ColoredOption} />
+        <Select size="medium" />
       </div>
     </>
   );

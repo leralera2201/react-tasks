@@ -1,6 +1,4 @@
-import { Spin } from "antd";
-
-import SpinSize from "../../wrappers/Spin/SpinSize";
+import Spin from "@components/Spin";
 
 import classes from "./Spin.module.scss";
 
@@ -11,10 +9,10 @@ const SpinPage = () => {
         <Spin />
       </div>
       <div className={classes.flexContainer}>
-        <SpinSize large />
+        <Spin size="large" />
       </div>
       <div className={classes.flexContainer}>
-        <SpinSize small />
+        <Spin size="small" color="black" />
       </div>
     </>
   );

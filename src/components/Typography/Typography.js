@@ -1,19 +1,38 @@
-import styled, { css } from "styled-components";
+import { Typography } from "antd";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 
-const Typography = styled.p`
-  font-size: 24px;
-  color: black;
-  margin: 0;
-  ${(props) =>
-    props.small &&
-    css`
-      font-size: 16px;
-    `}
-  ${(props) =>
-    props.large &&
-    css`
-      font-size: 40px;
-    `}
-`;
+import classes from "./Typography.module.scss";
 
-export default Typography;
+const TypographyComponent = ({ label, size, danger, success, warning }) => {
+  const sizeClass =
+    size === "large"
+      ? classes.textLarge
+      : size === "small"
+      ? classes.textSmall
+      : classes.textMedium;
+  return (
+    <Typography
+      className={clsx(
+        classes.text,
+        danger && classes.textDanger,
+        success && classes.textSuccess,
+        warning && classes.textWarning,
+        sizeClass
+      )}
+    >
+      {label}
+    </Typography>
+  );
+};
+
+TypographyComponent.propTypes = {
+  size: PropTypes.oneOf(["small", "medium", "large"]),
+  label: PropTypes.string.isRequired,
+};
+
+TypographyComponent.defaultProps = {
+  size: "medium",
+};
+
+export default TypographyComponent;

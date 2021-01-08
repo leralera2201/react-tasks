@@ -1,28 +1,30 @@
 import Modal from "@components/Modal";
 
-import PositionedModal from "../../wrappers/Modal/Positioned";
-
 const ModalPage = () => {
   return (
     <>
       <div>
-        <Modal />
+        <Modal label="Default" />
       </div>
       <br />
       <div>
-        <Modal wrapper={PositionedModal} horizontalCenter verticalCenter />
+        <Modal type="center" label="Center" />
       </div>
       <br />
       <div>
-        <Modal wrapper={PositionedModal} horizontalCenter top />
+        <Modal type="top" label="Top" />
       </div>
       <br />
       <div>
-        <Modal wrapper={PositionedModal} left top />
+        <Modal type="bottom" label="Bottom" />
       </div>
       <br />
       <div>
-        <Modal wrapper={PositionedModal} horizontalCenter bottom />
+        <Modal type="left" label="Left" />
+      </div>
+      <br />
+      <div>
+        <Modal type="right" label="Right" />
       </div>
     </>
   );

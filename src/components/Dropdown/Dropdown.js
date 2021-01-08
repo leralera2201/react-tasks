@@ -1,9 +1,20 @@
 import { Menu, Dropdown } from "antd";
 import { DownOutlined } from "@ant-design/icons";
+import styled from "styled-components";
+import PropTypes from "prop-types";
 
-const DropdownItem = ({ wrapper, colorWrapper, ...other }) => {
-  const Component = wrapper || Menu;
-  const ColorComponent = colorWrapper || Dropdown;
+const CustomDropdown = styled(Dropdown)`
+  margin: 10px;
+  display: block;
+  width: 150px;
+`;
+
+const BorderedMenu = styled(Menu)`
+  border: 1px solid black;
+`;
+
+const DropdownItem = ({ color, bordered, ...other }) => {
+  const Component = bordered ? BorderedMenu : Menu;
   const menu = (
     <Component>
       <Menu.Item>
@@ -36,12 +47,21 @@ const DropdownItem = ({ wrapper, colorWrapper, ...other }) => {
     </Component>
   );
   return (
-    <ColorComponent overlay={menu} trigger={["click"]} {...other}>
-      <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
+    <CustomDropdown overlay={menu} trigger={["click"]} {...other}>
+      <a
+        className="ant-dropdown-link"
+        onClick={(e) => e.preventDefault()}
+        style={color && { color }}
+      >
         Click me <DownOutlined />
       </a>
-    </ColorComponent>
+    </CustomDropdown>
   );
+};
+
+DropdownItem.propTypes = {
+  bordered: PropTypes.bool,
+  color: PropTypes.string,
 };
 
 export default DropdownItem;

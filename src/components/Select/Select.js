@@ -1,25 +1,48 @@
 import { Select } from "antd";
+import styled, { css } from "styled-components";
+import PropTypes from "prop-types";
 
 const { Option } = Select;
+
+const CustomSelect = styled(Select)`
+  ${(props) =>
+    props.size === "large" &&
+    css`
+      .ant-select-selector {
+        width: 200px !important;
+        font-size: 24px;
+      }
+    `}
+  ${(props) =>
+    props.size === "medium" &&
+    css`
+      .ant-select-selector {
+        width: 100px !important;
+        font-size: 16px;
+      }
+    `}
+`;
 
 function handleChange(value) {
   console.log(`selected ${value}`);
 }
 
-const SelectItem = ({ wrapper, optionWrapper, ...other }) => {
-  const Component = wrapper || Select;
-  const OptionComponent = optionWrapper || Option;
+const SelectComponent = (props) => {
   return (
     <>
-      <Component defaultValue="lucy" onChange={handleChange} {...other}>
-        <OptionComponent value="jack">Jack</OptionComponent>
-        <OptionComponent value="lucy">Lucy</OptionComponent>
-        <OptionComponent value="disabled" disabled>
+      <CustomSelect defaultValue="lucy" onChange={handleChange} {...props}>
+        <Option value="jack">Jack</Option>
+        <Option value="lucy">Lucy</Option>
+        <Option value="disabled" disabled>
           Disabled
-        </OptionComponent>
-      </Component>
+        </Option>
+      </CustomSelect>
     </>
   );
 };
 
-export default SelectItem;
+SelectComponent.propTypes = {
+  size: PropTypes.oneOf(["default", "medium", "large"]),
+};
+
+export default SelectComponent;
