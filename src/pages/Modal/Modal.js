@@ -1,5 +1,7 @@
 import Modal from "@components/Modal";
 
+import CenteredModal from "../../wrappers/Modal/Center";
+
 const ModalPage = () => {
   return (
     <>
@@ -8,23 +10,23 @@ const ModalPage = () => {
       </div>
       <br />
       <div>
-        <Modal type="center" label="Center" />
+        <Modal label="Center" wrapper={CenteredModal} />
       </div>
       <br />
       <div>
-        <Modal type="top" label="Top" />
+        <Modal label="Center" wrapper={CenteredModal} />
       </div>
       <br />
       <div>
-        <Modal type="bottom" label="Bottom" />
+        <Modal label="Center" wrapper={CenteredModal} />
       </div>
       <br />
       <div>
-        <Modal type="left" label="Left" />
+        <Modal label="Center" wrapper={CenteredModal} />
       </div>
       <br />
       <div>
-        <Modal type="right" label="Right" />
+        <Modal label="Center" wrapper={CenteredModal} />
       </div>
     </>
   );
