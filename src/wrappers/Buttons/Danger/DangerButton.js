@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
-import Button from "@components/Button";
+import { Button } from "antd";
 
 const DangerButton = styled(Button)`
-  background: #a00d0d;
-  color: white;
+  height: auto !important;
+  background: #a00d0d !important;
+  color: white !important;
 `;
 
 export default DangerButton;

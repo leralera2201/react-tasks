@@ -6,17 +6,16 @@ function handleChange(value) {
   console.log(`selected ${value}`);
 }
 
-const SelectItem = ({ wrapper, optionWrapper, ...other }) => {
+const SelectItem = ({ wrapper, ...other }) => {
   const Component = wrapper || Select;
-  const OptionComponent = optionWrapper || Option;
   return (
     <>
       <Component defaultValue="lucy" onChange={handleChange} {...other}>
-        <OptionComponent value="jack">Jack</OptionComponent>
-        <OptionComponent value="lucy">Lucy</OptionComponent>
-        <OptionComponent value="disabled" disabled>
+        <Option value="jack">Jack</Option>
+        <Option value="lucy">Lucy</Option>
+        <Option value="disabled" disabled>
           Disabled
-        </OptionComponent>
+        </Option>
       </Component>
     </>
   );

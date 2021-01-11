@@ -1,9 +1,9 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback } from "react";
 import { Modal, Button } from "antd";
 
-const ModalItem = ({ wrapper, ...other }) => {
-  const Component = wrapper || Modal;
+const ModalComponent = ({ label, wrapper, ...other }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const CustomModal = wrapper || Modal;
 
   const showModal = useCallback(() => {
     setIsModalVisible(true);
@@ -13,16 +13,12 @@ const ModalItem = ({ wrapper, ...other }) => {
     setIsModalVisible(false);
   }, [isModalVisible]);
 
-  const buttonText = useMemo(() => {
-    return Object.keys(other).join(" ") || "Modal";
-  }, [other]);
-
   return (
     <>
       <Button type="primary" onClick={showModal}>
-        {buttonText}
+        {label}
       </Button>
-      <Component
+      <CustomModal
         title="Basic Modal"
         visible={isModalVisible}
         onOk={handleCancel}
@@ -32,9 +28,9 @@ const ModalItem = ({ wrapper, ...other }) => {
         <p>Some contents...</p>
         <p>Some contents...</p>
         <p>Some contents...</p>
-      </Component>
+      </CustomModal>
     </>
   );
 };
 
-export default ModalItem;
+export default ModalComponent;

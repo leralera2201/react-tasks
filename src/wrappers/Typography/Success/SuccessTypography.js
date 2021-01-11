@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Typography from "@components/Typography";
+import { Typography } from "antd";
 
 const SuccessTypography = styled(Typography)`
   color: #2c7c09;

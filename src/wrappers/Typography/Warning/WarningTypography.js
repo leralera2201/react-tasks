@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Typography from "@components/Typography";
+import { Typography } from "antd";
 
 const WarningTypography = styled(Typography)`
   color: #c48607;

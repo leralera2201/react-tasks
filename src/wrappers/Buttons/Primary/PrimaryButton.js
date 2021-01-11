@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-import Button from "@components/Button";
-
+import { Button } from "antd";
 const PrimaryButton = styled(Button)`
-  background: #3939d7;
-  color: white;
+  height: auto !important;
+  background: #3939d7 !important;
+  color: white !important;
 `;
 
 export default PrimaryButton;

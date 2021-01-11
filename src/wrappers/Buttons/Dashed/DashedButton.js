@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-import Button from "@components/Button";
+import { Button } from "antd";
 
 const DashedButton = styled(Button)`
-  border: 3px dashed black;
+  height: auto !important;
+  border: 3px dashed black !important;
 `;
 
 export default DashedButton;
