@@ -76,11 +76,13 @@ export class BookForm extends Component {
         params: { id },
       },
     } = this.props;
+    /* eslint-disable no-param-reassign */
     const data = Object.entries(this.state).reduce((result, field) => {
       const [fieldName, { value }] = field;
       result[fieldName] = value;
       return result;
     }, {});
+    /* eslint-enable no-param-reassign */
     if (id) {
       updateBook(data);
     } else {

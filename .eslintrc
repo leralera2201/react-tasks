@@ -1,11 +1,26 @@
 {
   "extends": "airbnb",
   "rules": {
-    "linebreak-style": ["error", "unix"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "import/no-unresolved": "off",
-    "react/prop-types": 0,
-    "react/jsx-props-no-spreading": "off",
-    "no-param-reassign": 0
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+          [
+            "@components",
+            "./src/components"
+          ],
+          [
+            "@api",
+            "./src/api"
+          ]
+        ],
+        "extensions": [".ts", ".js", ".jsx", ".json"]
+      }
+    }
   }
 }
