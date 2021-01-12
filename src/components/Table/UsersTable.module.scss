@@ -1,0 +1,51 @@
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  & th,
+  & td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+  }
+  .sortingTh {
+    cursor: pointer;
+    position: relative;
+  }
+}
+
+.sortBy {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5px;
+  &Asc {
+    display: block;
+    left: 3px;
+    width: 0;
+    height: 0;
+    border: solid 5px transparent;
+    margin: 4px 4px 0 3px;
+    background: transparent;
+    border-bottom: solid 7px #aeaeae;
+    border-top-width: 0;
+    cursor: pointer;
+    &Active {
+      border-bottom: solid 7px #0057ab;
+    }
+  }
+  &Desc {
+    left: 3px;
+    display: block;
+    width: 0;
+    height: 0;
+    border: solid 5px transparent;
+    margin: 4px 4px 0 3px;
+    border-top: solid 7px #aeaeae;
+    background: transparent;
+    border-bottom-width: 0;
+    cursor: pointer;
+    &Active {
+      border-top: solid 7px #0057ab;
+    }
+  }
+}

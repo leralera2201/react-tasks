@@ -1,0 +1,12 @@
+.search {
+  margin: 20px;
+  display: flex;
+  justify-content: flex-end;
+
+  & input {
+    height: 30px;
+    &:focus {
+      outline: 1px solid #000000;
+    }
+  }
+}
