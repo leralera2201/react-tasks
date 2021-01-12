@@ -45,7 +45,7 @@ class Users extends Component {
           label: 'Entity type',
         },
       },
-      choosenColumn: '',
+      chosenColumn: '',
       isOpenModal: false,
       modalUser: null,
     };
@@ -64,7 +64,7 @@ class Users extends Component {
 
   checkHandler = (event) => {
     const { name } = event.target;
-    this.setState({ choosenColumn: name });
+    this.setState({ chosenColumn: name });
   };
 
   sortHandler = () => {
@@ -81,7 +81,7 @@ class Users extends Component {
   };
 
   closeModal = () => {
-    this.setState({ isOpenModal: false });
+    this.setState({ isOpenModal: false, modalUser: null });
   };
 
   openModal = (user) => {
@@ -90,7 +90,7 @@ class Users extends Component {
 
   render() {
     const {
-      sortOrder, columns, choosenColumn, isOpenModal, modalUser,
+      sortOrder, columns, chosenColumn, isOpenModal, modalUser,
     } = this.state;
 
     const {
@@ -104,7 +104,7 @@ class Users extends Component {
           <>
             <Search onChange={this.changeHandler} />
             <ColumnCheckbox
-              choosenColumn={choosenColumn}
+              chosenColumn={chosenColumn}
               columns={columns}
               onChange={this.checkHandler}
             />
@@ -116,7 +116,7 @@ class Users extends Component {
             users={sortedUsers}
             sortUsers={this.sortHandler}
             sortOrder={sortOrder}
-            choosenColumn={choosenColumn}
+            chosenColumn={chosenColumn}
             columns={columns}
             openModal={this.openModal}
           />

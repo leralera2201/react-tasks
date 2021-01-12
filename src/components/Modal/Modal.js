@@ -5,19 +5,17 @@ import classes from './Modal.module.scss';
 
 const Modal = ({ closeModal, user }) => (
   <div className={classes.modal}>
-    <div>
-      {user.first_name}
+    <div className={classes.modalInner}>
+      <div className={classes.modalTitle}>
+        {user.first_name}
+        {user.last_name}
+      </div>
+      <div className={classes.modalText}>
+        {user.email}
+      </div>
+      <div className={classes.modalColor} style={{ background: user.entity_type }} />
+      <div onClick={closeModal} className={classes.close} />
     </div>
-    <div>
-      {user.last_name}
-    </div>
-    <div>
-      {user.email}
-    </div>
-    <div>
-      {user.entity_type}
-    </div>
-    <button type="button" onClick={closeModal}>click</button>
   </div>
 );
 

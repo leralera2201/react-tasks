@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import classes from './UsersTable.module.scss';
 
 const UsersTable = ({
-  users, sortOrder, sortUsers, choosenColumn, columns, openModal,
+  users, sortOrder, sortUsers, chosenColumn, columns, openModal,
 }) => {
   const name = useMemo(() => (
     <th className={classes.sortingTh} onClick={sortUsers}>
@@ -32,9 +32,9 @@ const UsersTable = ({
       <thead>
         <tr>
           <th>#</th>
-          {choosenColumn && choosenColumn === 'first_name' && name}
-          {choosenColumn && choosenColumn !== 'first_name' && <th>{columns[choosenColumn].label}</th>}
-          {!choosenColumn && (
+          {chosenColumn && chosenColumn === 'first_name' && name}
+          {chosenColumn && chosenColumn !== 'first_name' && <th>{columns[chosenColumn].label}</th>}
+          {!chosenColumn && (
             <>
               {name}
               <th>Surname</th>
@@ -46,11 +46,11 @@ const UsersTable = ({
       </thead>
       <tbody>
         {users.map((user, index) => (
-          <tr key={user.id} onClick={openModal}>
+          <tr key={user.id} onClick={() => openModal(user)}>
             <td>{index + 1}</td>
-            {choosenColumn && choosenColumn === 'entity_type' && <td style={{ backgroundColor: user.entity_type }} />}
-            {choosenColumn && choosenColumn !== 'entity_type' && <td>{user[choosenColumn]}</td> }
-            {!choosenColumn && (
+            {chosenColumn && chosenColumn === 'entity_type' && <td style={{ backgroundColor: user.entity_type }} />}
+            {chosenColumn && chosenColumn !== 'entity_type' && <td>{user[chosenColumn]}</td> }
+            {!chosenColumn && (
               <>
                 <td>{user.first_name}</td>
                 <td>{user.last_name}</td>
@@ -73,7 +73,7 @@ UsersTable.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   sortOrder: PropTypes.string.isRequired,
   sortUsers: PropTypes.func.isRequired,
-  choosenColumn: PropTypes.string.isRequired,
+  chosenColumn: PropTypes.string.isRequired,
   columns: PropTypes.shape({
     firstName: columnShape,
     lastName: columnShape,

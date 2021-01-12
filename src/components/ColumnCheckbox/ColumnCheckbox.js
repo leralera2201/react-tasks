@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import classes from './ColumnCheckbox.module.scss';
 
-const ColumnCheckbox = ({ columns, choosenColumn, onChange }) => (
+const ColumnCheckbox = ({ columns, chosenColumn, onChange }) => (
   <div className={clsx('mb20', classes.checkboxes)}>
     <div className={classes.checkboxesText}>Choose Columns</div>
     <div>
@@ -13,7 +13,7 @@ const ColumnCheckbox = ({ columns, choosenColumn, onChange }) => (
         type="checkbox"
         id="all"
         name=""
-        checked={choosenColumn === ''}
+        checked={chosenColumn === ''}
         onChange={onChange}
       />
     </div>
@@ -25,7 +25,7 @@ const ColumnCheckbox = ({ columns, choosenColumn, onChange }) => (
             type="checkbox"
             id={fieldName}
             name={fieldName}
-            checked={choosenColumn === fieldName}
+            checked={chosenColumn === fieldName}
             onChange={onChange}
           />
         </div>
@@ -45,7 +45,7 @@ ColumnCheckbox.propTypes = {
     email: columnShape,
     entityType: columnShape,
   }).isRequired,
-  choosenColumn: PropTypes.string.isRequired,
+  chosenColumn: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
