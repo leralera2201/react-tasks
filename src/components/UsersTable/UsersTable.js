@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import classes from './UsersTable.module.scss';
 
 const UsersTable = ({
-  users, sortOrder, sortUsers, choosenColumn, columns,
+  users, sortOrder, sortUsers, choosenColumn, columns, openModal,
 }) => {
   const name = useMemo(() => (
     <th className={classes.sortingTh} onClick={sortUsers}>
@@ -25,7 +25,7 @@ const UsersTable = ({
         />
       </div>
     </th>
-  ), []);
+  ), [sortOrder]);
 
   return (
     <table className={classes.table}>
@@ -46,7 +46,7 @@ const UsersTable = ({
       </thead>
       <tbody>
         {users.map((user, index) => (
-          <tr key={user.id}>
+          <tr key={user.id} onClick={openModal}>
             <td>{index + 1}</td>
             {choosenColumn && choosenColumn === 'entity_type' && <td style={{ backgroundColor: user.entity_type }} />}
             {choosenColumn && choosenColumn !== 'entity_type' && <td>{user[choosenColumn]}</td> }
@@ -65,12 +65,22 @@ const UsersTable = ({
   );
 };
 
+const columnShape = PropTypes.shape({
+  label: PropTypes.string.isRequired,
+});
+
 UsersTable.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   sortOrder: PropTypes.string.isRequired,
   sortUsers: PropTypes.func.isRequired,
   choosenColumn: PropTypes.string.isRequired,
-  columns: PropTypes.objectOf(PropTypes.object).isRequired,
+  columns: PropTypes.shape({
+    firstName: columnShape,
+    lastName: columnShape,
+    email: columnShape,
+    entityType: columnShape,
+  }).isRequired,
+  openModal: PropTypes.func.isRequired,
 };
 
 export default UsersTable;

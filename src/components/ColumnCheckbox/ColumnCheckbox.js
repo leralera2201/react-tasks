@@ -6,6 +6,7 @@ import classes from './ColumnCheckbox.module.scss';
 
 const ColumnCheckbox = ({ columns, choosenColumn, onChange }) => (
   <div className={clsx('mb20', classes.checkboxes)}>
+    <div className={classes.checkboxesText}>Choose Columns</div>
     <div>
       <label htmlFor="all">All</label>
       <input
@@ -33,8 +34,17 @@ const ColumnCheckbox = ({ columns, choosenColumn, onChange }) => (
   </div>
 );
 
+const columnShape = PropTypes.shape({
+  label: PropTypes.string.isRequired,
+});
+
 ColumnCheckbox.propTypes = {
-  columns: PropTypes.objectOf(PropTypes.object).isRequired,
+  columns: PropTypes.shape({
+    firstName: columnShape,
+    lastName: columnShape,
+    email: columnShape,
+    entityType: columnShape,
+  }).isRequired,
   choosenColumn: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };

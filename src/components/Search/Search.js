@@ -5,6 +5,7 @@ import classes from './Search.module.scss';
 
 const Search = ({ onChange }) => (
   <div className={classes.search}>
+    <div className={classes.searchText}>Search by email</div>
     <input type="text" placeholder="Search" onChange={onChange} />
   </div>
 );

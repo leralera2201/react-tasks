@@ -1,10 +1,17 @@
 .search {
+  flex-direction: column;
+  align-items: flex-end;
   margin: 20px;
   display: flex;
-  justify-content: flex-end;
+
+  &Text {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
 
   & input {
     height: 30px;
+    padding: 0 5px;
     &:focus {
       outline: 1px solid #000000;
     }
