@@ -19,7 +19,7 @@ export const searchUsers = (word) => ({
   payload: { word },
 });
 
-export const sortUsers = (order = '') => ({
+export const sortUsers = (sorter) => ({
   type: USERS_ACTION_TYPES.USERS_SORT,
-  payload: { order },
+  payload: { sorter },
 });

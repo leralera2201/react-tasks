@@ -18,14 +18,14 @@ const ColumnCheckbox = ({ columns, chosenColumn, onChange }) => (
       />
     </div>
     {
-      Object.entries(columns).map(([fieldName, field]) => (
-        <div key={fieldName}>
-          <label htmlFor={fieldName}>{field.label}</label>
+      columns.map((column) => (
+        <div key={column.key}>
+          <label htmlFor={column.key}>{column.title}</label>
           <input
             type="checkbox"
-            id={fieldName}
-            name={fieldName}
-            checked={chosenColumn === fieldName}
+            id={column.key}
+            name={column.key}
+            checked={chosenColumn === column.key}
             onChange={onChange}
           />
         </div>
@@ -34,17 +34,16 @@ const ColumnCheckbox = ({ columns, chosenColumn, onChange }) => (
   </div>
 );
 
-const columnShape = PropTypes.shape({
-  label: PropTypes.string.isRequired,
-});
-
 ColumnCheckbox.propTypes = {
-  columns: PropTypes.shape({
-    firstName: columnShape,
-    lastName: columnShape,
-    email: columnShape,
-    entityType: columnShape,
-  }).isRequired,
+  columns: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    key: PropTypes.string.isRequired,
+    sorter: PropTypes.func,
+    sortDirections: PropTypes.arrayOf(PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.bool,
+    ])),
+  })).isRequired,
   chosenColumn: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };

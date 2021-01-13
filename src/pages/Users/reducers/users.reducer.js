@@ -72,17 +72,11 @@ const UsersReducer = (state = initialState, action) => {
       };
     }
     case USERS_ACTION_TYPES.USERS_SORT: {
-      const { order } = action.payload;
+      const { sorter } = action.payload;
       const { data } = state.item;
       const { filteredUsers } = data;
       const sortedUsers = [...filteredUsers];
-      if (order === 'asc') {
-        sortedUsers.sort((prevUser, nextUser) => (
-          prevUser.first_name > nextUser.first_name ? 1 : -1));
-      } else if (order === 'desc') {
-        sortedUsers.sort((prevUser, nextUser) => (
-          prevUser.first_name < nextUser.first_name ? 1 : -1));
-      }
+      sortedUsers.sort(sorter);
       return {
         ...state,
         item: {

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import UsersTable from '../../components/UsersTable';
 import Loader from '../../components/Loader';
 import Search from '../../components/Search';
 import ColumnCheckbox from '../../components/ColumnCheckbox';
 import Empty from '../../components/Empty';
 import Error from '../../components/Error';
 import Modal from '../../components/Modal';
+import Table from '../../components/Table';
 
 import {
   usersFetchDataItemSelector,
@@ -19,35 +19,58 @@ import {
 import fetchUsers from './thunks/users.thunks';
 import { searchUsers, sortUsers } from './actions/users.actions';
 
-const userProperties = {
-  firstName: 'first_name',
-  lastName: 'last_name',
-  email: 'email',
-  entityType: 'entity_type',
-};
-
 class Users extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sortOrder: '',
-      columns: {
-        [userProperties.firstName]: {
-          label: 'First name',
-        },
-        [userProperties.lastName]: {
-          label: 'Last name',
-        },
-        [userProperties.email]: {
-          label: 'Email',
-        },
-        [userProperties.entityType]: {
-          label: 'Entity type',
-        },
-      },
+      sortDirection: 'asc',
       chosenColumn: '',
       isOpenModal: false,
       modalUser: null,
+      columns: [
+        {
+          title: '#',
+          key: 'id',
+        },
+        {
+          title: 'Name',
+          key: 'first_name',
+          sorter: (a, b) => {
+            const { sortDirection } = this.state;
+            if (sortDirection === 'asc') {
+              return a.first_name > b.first_name ? 1 : -1;
+            }
+            if (sortDirection === 'desc') {
+              return a.first_name < b.first_name ? 1 : -1;
+            }
+            return 0;
+          },
+          sortDirections: ['asc', 'desc', false],
+        },
+        {
+          title: 'Surname',
+          key: 'last_name',
+        },
+        {
+          title: 'Email',
+          key: 'email',
+          sorter: (a, b) => {
+            const { sortDirection } = this.state;
+            if (sortDirection === 'asc') {
+              return a.email > b.email ? 1 : -1;
+            }
+            if (sortDirection === 'desc') {
+              return a.email < b.email ? 1 : -1;
+            }
+            return 0;
+          },
+          sortDirections: ['asc', 'desc', false],
+        },
+        {
+          title: 'Entity type',
+          key: 'entity_type',
+        },
+      ],
     };
   }
 
@@ -67,19 +90,6 @@ class Users extends Component {
     this.setState({ chosenColumn: name });
   };
 
-  sortHandler = () => {
-    const { sortOrder } = this.state;
-    const { sortUsersByName } = this.props;
-    let order = '';
-    if (sortOrder === '') {
-      order = 'asc';
-    } else if (sortOrder === 'asc') {
-      order = 'desc';
-    }
-    this.setState({ sortOrder: order });
-    sortUsersByName(order);
-  };
-
   closeModal = () => {
     this.setState({ isOpenModal: false, modalUser: null });
   };
@@ -88,9 +98,29 @@ class Users extends Component {
     this.setState({ isOpenModal: true, modalUser: user });
   };
 
+  sortHandler = (column) => {
+    const { sorter, sortDirections } = column;
+    const { sortUsersByName } = this.props;
+    if (sorter) {
+      sortUsersByName(sorter);
+      this.changeSortDirection(sortDirections);
+    }
+  };
+
+  changeSortDirection = (sortDirections) => {
+    const { sortDirection } = this.state;
+    let sortDirectionIndex = sortDirections.findIndex((direction) => direction === sortDirection);
+    if (sortDirectionIndex === sortDirections.length - 1) {
+      sortDirectionIndex = -1;
+    }
+    this.setState({
+      sortDirection: sortDirections[sortDirectionIndex + 1],
+    });
+  }
+
   render() {
     const {
-      sortOrder, columns, chosenColumn, isOpenModal, modalUser,
+      columns, chosenColumn, isOpenModal, modalUser, sortDirection,
     } = this.state;
 
     const {
@@ -112,13 +142,13 @@ class Users extends Component {
         )}
         {loading && <Loader />}
         {!loading && !error && sortedUsers.length > 0 && (
-          <UsersTable
-            users={sortedUsers}
-            sortUsers={this.sortHandler}
-            sortOrder={sortOrder}
-            chosenColumn={chosenColumn}
+          <Table
             columns={columns}
+            data={sortedUsers}
+            sortDirection={sortDirection}
+            sortHandler={this.sortHandler}
             openModal={this.openModal}
+            chosenColumn={chosenColumn}
           />
         )}
         {!error && !loading && sortedUsers.length === 0 && (

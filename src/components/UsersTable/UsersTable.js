@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 
+import TableBody from '../Table/TableBody';
+
 import classes from './UsersTable.module.scss';
 
 const UsersTable = ({
