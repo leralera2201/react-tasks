@@ -14,3 +14,24 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.p20 {
+  padding: 20px;
+}
+
+.buttons {
+  padding: 10px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #d8d8d8;
+  &__right {
+    justify-content: flex-end;
+  }
+}
+
+.error {
+  color: #cc0000;
+}

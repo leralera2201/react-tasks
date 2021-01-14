@@ -1,0 +1,41 @@
+.circle{
+  cursor: pointer;
+  margin-top: 50px;
+  padding: 10px;
+  border-radius: 100%;
+  border: 1px solid #1eb6c5;
+  &__wrapper {
+    border: 10px solid #1eb6c58f;
+    padding: 6px;
+    border-radius: 100%;
+    transition: all 1s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__inner {
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #1eb6c5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 6px solid #1eb6c5;
+    border-radius: 100%;
+    height: 200px;
+    width: 200px;
+    transition: all 1s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.text {
+  cursor: default;
+  background: #1eb6c5;
+  font-size: 24px;
+  color: white;
+  padding: 10px;
+}
