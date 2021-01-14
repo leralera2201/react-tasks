@@ -20,11 +20,6 @@
     justify-content: center;
     align-items: center;
 
-    &__input:checked + & {
-      background: #1785b8;
-      color: white;
-    }
-
     &:hover {
       background: #1785b8;
       color: white;
@@ -38,5 +33,17 @@
   }
   &__input {
     display: none;
+  }
+}
+
+.date {
+  width: 100%;
+  max-width: 400px;
+  margin: 0;
+  &__item {
+    padding: 0;
+    & ::-webkit-input-placeholder {
+      text-align: center;
+    }
   }
 }

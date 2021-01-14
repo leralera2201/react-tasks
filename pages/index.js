@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import {useState} from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.scss'
 import StartStepper from "../components/StartStepper";
@@ -8,6 +9,7 @@ import ThirdFormPage from "../components/ThirdFormPage";
 
 export default function Home() {
   const router = useRouter();
+  const [readOnly, setReadOnly] = useState(false);
   const { query: { step } } = router;
 
   const nextPage = () => {
@@ -16,6 +18,7 @@ export default function Home() {
 
   const previousPage = () => {
     router.push(`?step=${+step - 1}`);
+    setReadOnly(true);
   }
 
   const onSubmit = (values) => {
@@ -29,7 +32,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {!step && <StartStepper /> }
-      {step && step == 1 && <FirstFormPage onSubmit={nextPage} />}
+      {step && step == 1 && <FirstFormPage onSubmit={nextPage} readOnly={readOnly}/>}
       {step && step == 2 && <SecondFormPage onSubmit={nextPage} previousPage={previousPage} />}
       {step && step == 3 && <ThirdFormPage onSubmit={onSubmit} />}
 

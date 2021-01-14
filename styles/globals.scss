@@ -35,3 +35,16 @@ a {
 .error {
   color: #cc0000;
 }
+
+.label {
+  width: 100%;
+  color: gray;
+  font-size: 20px;
+  letter-spacing: 1.2px;
+  margin: 5px 0;
+  text-transform: uppercase;
+  &-center {
+    margin: 10px 0;
+    text-align: center;
+  }
+}
