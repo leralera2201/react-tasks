@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Col, FormGroup, Label } from 'reactstrap';
-import { useSelector } from "react-redux";
-import { Field, reduxForm } from 'redux-form';
+import { connect, useSelector } from "react-redux";
+import { Field, formValueSelector, reduxForm } from 'redux-form';
 import clsx from 'clsx';
 
 import validate from '../../utils/validate';
@@ -25,14 +25,9 @@ const sex = {
   },
 };
 
-const SecondFormPage = ({ handleSubmit, previousPage }) => {
-  const [activeSex, setActiveSex] = useState('');
+let SecondFormPage = ({ handleSubmit, previousPage, sex: activeSex }) => {
   const [dateError, setDateError] = useState(false);
   const isCompleted = useSelector(secondStepIsCompletedSelector);
-  const setActiveRadio = (event) => {
-    const { target: { value } } = event;
-    setActiveSex(value);
-  };
 
   const showDateError = () => {
     setDateError(true);
@@ -89,19 +84,19 @@ const SecondFormPage = ({ handleSubmit, previousPage }) => {
             {Object.entries(sex)
               .map(([fieldName, field]) =>
                 <label
-                    key={fieldName}
-                    className={
-                      clsx(styles.checkbox__item,
-                          activeSex === fieldName && styles.checkbox__item__active
-                      )}
+                  key={fieldName}
+                  className={
+                    clsx(styles.checkbox__item,
+                        activeSex === fieldName && styles.checkbox__item__active
+                    )}
                 >
                   <Field
-                      name="sex"
-                      component="input"
-                      type="radio"
-                      value={fieldName}
-                      className={styles.checkbox__input}
-                      onChange={setActiveRadio}
+                    name="sex"
+                    component="input"
+                    type="radio"
+                    disabled={isCompleted}
+                    value={fieldName}
+                    className={styles.checkbox__input}
                   /> {field.label}
                 </label>
             )}
@@ -118,7 +113,7 @@ const SecondFormPage = ({ handleSubmit, previousPage }) => {
             <Field
               name="hearFrom"
               component={renderSelect}
-              readOnly={isCompleted}
+              disabled={isCompleted}
             />
           </FormGroup>
         </div>
@@ -144,8 +139,18 @@ const SecondFormPage = ({ handleSubmit, previousPage }) => {
   )
 };
 
-export default reduxForm({
+SecondFormPage = reduxForm({
   form: 'user',
   destroyOnUnmount: false,
   validate,
 })(SecondFormPage);
+
+const selector = formValueSelector('user')
+SecondFormPage = connect(state => {
+  const sex = selector(state, 'sex')
+  return {
+    sex,
+  }
+})(SecondFormPage);
+
+export default SecondFormPage;

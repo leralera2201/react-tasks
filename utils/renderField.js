@@ -2,11 +2,12 @@ import { Input } from 'reactstrap';
 
 import Error from '../components/Error';
 
-export const renderSelect = ({ input, meta: { touched, error, invalid } }) => (
-  <div>
+export const renderSelect = ({ input, meta: { touched, error, invalid }, ...other }) => (
+  <>
     <Input
       type="select"
       {...input}
+      {...other}
       invalid={touched && invalid}
     >
       <option value="">Choose answer...</option>
@@ -14,18 +15,16 @@ export const renderSelect = ({ input, meta: { touched, error, invalid } }) => (
       <option value="2">2</option>
     </Input>
     {touched && error && <Error error={error} />}
-  </div>
+  </>
 )
 
 export const renderTextField = ({input, meta: { touched, invalid }, ...other}) => {
   return (
-    <>
       <Input
         {...input}
         {...other}
         invalid={touched && invalid}
       />
-    </>
   )
 }
 
