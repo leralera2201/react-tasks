@@ -2,7 +2,7 @@ import { Input } from "reactstrap";
 
 import Error from "../Error";
 
-const Select = () => ({ input, meta: { touched, error, invalid }, ...other }) => (
+const Select = ({ input, meta: { touched, error, invalid }, ...other }) => (
   <>
     <Input
       type="select"
