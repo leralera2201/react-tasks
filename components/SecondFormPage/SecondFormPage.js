@@ -10,7 +10,7 @@ import { renderSelect, renderTextField } from '../../utils/renderField';
 import TabContainer from '../TabContainer';
 import Error from '../Error';
 
-import { secondStepIsCompletedSelector } from './selectors/SecondFormPage.selectors';
+import { secondStepIsCompletedSelector } from './selectors/secondFormPage.selectors';
 import styles from './SecondFormPage.module.scss';
 
 const sex = {

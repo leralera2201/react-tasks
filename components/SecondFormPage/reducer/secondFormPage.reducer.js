@@ -1,4 +1,4 @@
-import { COMPLETE_SECOND_STEP } from "../action-types/SecondFormPage.actionTypes";
+import { COMPLETE_SECOND_STEP } from "../action-types/secondFormPage.actionTypes";
 
 const initialState = {
   isCompleted: false,

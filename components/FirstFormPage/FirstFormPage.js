@@ -7,7 +7,7 @@ import validate from '../../utils/validate'
 import { renderTextFieldWithError } from '../../utils/renderField';
 
 import TabContainer from '../TabContainer';
-import { firstStepIsCompletedSelector } from './selectors/FirstFormPage.selectors';
+import { firstStepIsCompletedSelector } from './selectors/firstFormPage.selectors';
 
 const FirstFormPage = ({ handleSubmit }) => {
   const isCompleted = useSelector(firstStepIsCompletedSelector);

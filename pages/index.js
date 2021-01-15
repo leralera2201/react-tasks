@@ -7,8 +7,8 @@ import FirstFormPage from '../components/FirstFormPage';
 import SecondFormPage from '../components/SecondFormPage';
 import ThirdFormPage from '../components/ThirdFormPage';
 import styles from '../styles/Home.module.scss';
-import { completeFirstStep } from '../components/FirstFormPage/actions/FirstFormPage.actions';
-import { completeSecondStep } from '../components/SecondFormPage/actions/SecondFormPage.actions';
+import { completeFirstStep } from '../components/FirstFormPage/actions/firstFormPage.actions';
+import { completeSecondStep } from '../components/SecondFormPage/actions/secondFormPage.actions';
 
 const Home = () => {
   const router = useRouter();

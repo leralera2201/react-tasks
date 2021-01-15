@@ -1,4 +1,4 @@
-import { COMPLETE_FIRST_STEP } from "../action-types/FirstFormPage.actionTypes";
+import { COMPLETE_FIRST_STEP } from "../action-types/firstFormPage.actionTypes";
 
 const initialState = {
   isCompleted: false,
