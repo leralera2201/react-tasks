@@ -15,7 +15,7 @@ const validate = values => {
   }
 
   if (!values.email) {
-    errors.email = 'Required'
+    errors.email = 'Required';
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
     errors.email = 'Invalid email address';
   }
@@ -28,16 +28,42 @@ const validate = values => {
     errors.hearFrom = 'Required';
   }
 
+  const currentYear = new Date().getFullYear();
   const date = `${values.day || 0}-${values.month || 0}-${values.year || 0}`;
-  console.log(date)
   const isValid = moment(date,  "DD-MM-YYYY").isValid();
-  console.log(isValid)
+
+  if(
+    !values.year
+    || values.year < currentYear - 100
+    || values.year > currentYear
+  ) {
+    errors.date = 'Invalid date';
+    errors.year = 'Invalid year';
+  };
+
+  if(
+    !values.month
+    || values.month < 1
+    || values.month > 12
+  ) {
+    errors.date = 'Invalid date';
+    errors.month = 'Invalid year';
+  };
+
+  if(
+    !values.day
+    || values.day < 1
+    || values.day > 31
+  ) {
+    errors.date = 'Invalid date';
+    errors.day = 'Invalid year';
+  };
 
   if(!isValid) {
     errors.date = 'Invalid date';
-  }
+  };
 
-  return errors
+  return errors;
 }
 
-export default validate
+export default validate;

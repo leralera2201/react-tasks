@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux'
 import 'bootstrap/scss/bootstrap.scss';
 
-import { useStore } from "../store/store";
+import { useStore } from '../store/store';
 import '../styles/globals.scss'
 
 export default function MyApp({ Component, pageProps }) {

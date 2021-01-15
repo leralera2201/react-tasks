@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import styles from "./StartStepper.module.scss";
+import styles from './StartStepper.module.scss';
 
-export default function StartStepper() {
+const StartStepper = () => {
   return <>
     <div className={styles.text}>Lets the stepper begin</div>
     <Link href="/?step=1">
@@ -17,3 +17,5 @@ export default function StartStepper() {
     </Link>
   </>
 }
+
+export default StartStepper;
