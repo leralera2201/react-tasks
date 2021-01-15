@@ -1,12 +1,11 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import {Button, FormGroup, Label} from 'reactstrap';
+import { Button, FormGroup, Label } from 'reactstrap';
 
 import validate from '../../utils/validate'
 import { renderTextFieldWithError } from '../../utils/renderField';
 
 import TabContainer from '../TabContainer';
-
 
 const FirstFormPage = ({ handleSubmit, readOnly }) => (
   <TabContainer step={1} title="Signup">
@@ -20,7 +19,7 @@ const FirstFormPage = ({ handleSubmit, readOnly }) => (
             type="email"
             id="email"
             placeholder="Enter email"
-            readOnly={readOnly}
+            readOnly={readOnly[1]}
           />
         </FormGroup>
         <FormGroup>
@@ -31,7 +30,7 @@ const FirstFormPage = ({ handleSubmit, readOnly }) => (
             type="password"
             id="password"
             placeholder="Enter password"
-            readOnly={readOnly}
+            readOnly={readOnly[1]}
           />
         </FormGroup>
         <FormGroup>
@@ -42,7 +41,7 @@ const FirstFormPage = ({ handleSubmit, readOnly }) => (
             type="password"
             id="password_confirmation"
             placeholder="Password confirmation"
-            readOnly={readOnly}
+            readOnly={readOnly[1]}
           />
         </FormGroup>
       </div>

@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
-import { Field, reduxForm } from 'redux-form'
+import React, { useState } from 'react'
 import { Button, Col, FormGroup, Label } from 'reactstrap';
+import { Field, reduxForm } from 'redux-form'
 import clsx from 'clsx';
 
 import validate from '../../utils/validate'
@@ -11,24 +11,24 @@ import Error from '../Error';
 
 import styles from './SecondFormPage.module.scss';
 
+const sex = {
+  male: {
+    label: 'Male',
+  },
+  female: {
+    label: 'Female',
+  },
+  unspecified: {
+    label: 'Unspecified',
+  },
+}
 
 const SecondFormPage = ({ handleSubmit, previousPage }) => {
   const [activeSex, setActiveSex] = useState('');
-  const [sex, _] = useState({
-    male: {
-      label: 'Male',
-    },
-    female: {
-      label: 'Female',
-    },
-    unspecified: {
-      label: 'Unspecified',
-    },
-  })
   const [dateError, setDateError] = useState(false);
 
   const setActiveRadio = (event) => {
-    const {target: {value}} = event;
+    const { target: { value } } = event;
     setActiveSex(value);
   };
 
@@ -47,7 +47,7 @@ const SecondFormPage = ({ handleSubmit, previousPage }) => {
                 <Field
                   name="day"
                   component={renderTextField}
-                  type="number"
+                  type="text"
                   placeholder="DD"
                   onChange={showDateError}
                 />
@@ -56,7 +56,7 @@ const SecondFormPage = ({ handleSubmit, previousPage }) => {
                 <Field
                   name="month"
                   component={renderTextField}
-                  type="number"
+                  type="text"
                   placeholder="MM"
                   onChange={showDateError}
                 />
@@ -65,7 +65,7 @@ const SecondFormPage = ({ handleSubmit, previousPage }) => {
                 <Field
                   name="year"
                   component={renderTextField}
-                  type="number"
+                  type="text"
                   placeholder="YYYY"
                   onChange={showDateError}
                 />
@@ -133,10 +133,10 @@ const SecondFormPage = ({ handleSubmit, previousPage }) => {
       </form>
     </TabContainer>
   )
-}
+};
 
 export default reduxForm({
   form: 'user',
   destroyOnUnmount: false,
   validate,
-})(SecondFormPage)
+})(SecondFormPage);
