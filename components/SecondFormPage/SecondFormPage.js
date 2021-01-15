@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Button, Col, FormGroup, Label } from 'reactstrap';
-import { Field, reduxForm } from 'redux-form'
+import { useSelector } from "react-redux";
+import { Field, reduxForm } from 'redux-form';
 import clsx from 'clsx';
 
-import validate from '../../utils/validate'
+import validate from '../../utils/validate';
 import { renderSelect, renderTextField } from '../../utils/renderField';
 
 import TabContainer from '../TabContainer';
 import Error from '../Error';
 
+import { secondStepIsCompletedSelector } from './selectors/SecondFormPage.selectors';
 import styles from './SecondFormPage.module.scss';
 
 const sex = {
@@ -21,12 +23,12 @@ const sex = {
   unspecified: {
     label: 'Unspecified',
   },
-}
+};
 
 const SecondFormPage = ({ handleSubmit, previousPage }) => {
   const [activeSex, setActiveSex] = useState('');
   const [dateError, setDateError] = useState(false);
-
+  const isCompleted = useSelector(secondStepIsCompletedSelector);
   const setActiveRadio = (event) => {
     const { target: { value } } = event;
     setActiveSex(value);
@@ -50,6 +52,7 @@ const SecondFormPage = ({ handleSubmit, previousPage }) => {
                   type="text"
                   placeholder="DD"
                   onChange={showDateError}
+                  readOnly={isCompleted}
                 />
               </Col>
               <Col sm={4} className={styles.date__item}>
@@ -59,6 +62,7 @@ const SecondFormPage = ({ handleSubmit, previousPage }) => {
                   type="text"
                   placeholder="MM"
                   onChange={showDateError}
+                  readOnly={isCompleted}
                 />
               </Col>
               <Col sm={4} className={styles.date__item}>
@@ -68,6 +72,7 @@ const SecondFormPage = ({ handleSubmit, previousPage }) => {
                   type="text"
                   placeholder="YYYY"
                   onChange={showDateError}
+                  readOnly={isCompleted}
                 />
               </Col>
             </FormGroup>
@@ -110,7 +115,11 @@ const SecondFormPage = ({ handleSubmit, previousPage }) => {
           </div>
           <FormGroup>
             <Label className="label label-center">Where did you hear about us?</Label>
-            <Field name="hearFrom" component={renderSelect} />
+            <Field
+              name="hearFrom"
+              component={renderSelect}
+              readOnly={isCompleted}
+            />
           </FormGroup>
         </div>
         <div className="buttons">

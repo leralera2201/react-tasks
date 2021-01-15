@@ -24,10 +24,10 @@ const ThirdFormPage = ({ handleSubmit }) => (
       </div>
     </form>
   </TabContainer>
-)
+);
 
 export default reduxForm({
   form: 'user',
   destroyOnUnmount: false,
-  validate
-})(ThirdFormPage)
+  validate,
+})(ThirdFormPage);
