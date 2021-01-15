@@ -5,10 +5,11 @@ import { Field, formValueSelector, reduxForm } from 'redux-form';
 import clsx from 'clsx';
 
 import validate from '../../utils/validate';
-import { renderSelect, renderTextField } from '../../utils/renderField';
 
 import TabContainer from '../TabContainer';
 import Error from '../Error';
+import Select from '../Select';
+import TextField from '../TextField';
 
 import { secondStepIsCompletedSelector } from './selectors/secondFormPage.selectors';
 import styles from './SecondFormPage.module.scss';
@@ -25,7 +26,7 @@ const sex = {
   },
 };
 
-let SecondFormPage = ({ handleSubmit, previousPage, sex: activeSex }) => {
+let SecondFormPage = ({ handleSubmit, invalid, previousPage, activeSex }) => {
   const [dateError, setDateError] = useState(false);
   const isCompleted = useSelector(secondStepIsCompletedSelector);
 
@@ -43,7 +44,7 @@ let SecondFormPage = ({ handleSubmit, previousPage, sex: activeSex }) => {
               <Col sm={4} className={styles.date__item}>
                 <Field
                   name="day"
-                  component={renderTextField}
+                  component={TextField}
                   type="text"
                   placeholder="DD"
                   onChange={showDateError}
@@ -53,7 +54,7 @@ let SecondFormPage = ({ handleSubmit, previousPage, sex: activeSex }) => {
               <Col sm={4} className={styles.date__item}>
                 <Field
                   name="month"
-                  component={renderTextField}
+                  component={TextField}
                   type="text"
                   placeholder="MM"
                   onChange={showDateError}
@@ -63,7 +64,7 @@ let SecondFormPage = ({ handleSubmit, previousPage, sex: activeSex }) => {
               <Col sm={4} className={styles.date__item}>
                 <Field
                   name="year"
-                  component={renderTextField}
+                  component={TextField}
                   type="text"
                   placeholder="YYYY"
                   onChange={showDateError}
@@ -112,7 +113,7 @@ let SecondFormPage = ({ handleSubmit, previousPage, sex: activeSex }) => {
             <Label className="label label-center">Where did you hear about us?</Label>
             <Field
               name="hearFrom"
-              component={renderSelect}
+              component={Select}
               disabled={isCompleted}
             />
           </FormGroup>
@@ -130,6 +131,7 @@ let SecondFormPage = ({ handleSubmit, previousPage, sex: activeSex }) => {
             type="submit"
             outline
             color="info"
+            disabled={invalid}
           >
             Next
           </Button>
@@ -145,11 +147,11 @@ SecondFormPage = reduxForm({
   validate,
 })(SecondFormPage);
 
-const selector = formValueSelector('user')
+const selector = formValueSelector('user');
 SecondFormPage = connect(state => {
-  const sex = selector(state, 'sex')
+  const sex = selector(state, 'sex');
   return {
-    sex,
+    activeSex: sex,
   }
 })(SecondFormPage);
 

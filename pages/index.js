@@ -6,9 +6,9 @@ import StartStepper from '../components/StartStepper';
 import FirstFormPage from '../components/FirstFormPage';
 import SecondFormPage from '../components/SecondFormPage';
 import ThirdFormPage from '../components/ThirdFormPage';
-import styles from '../styles/Home.module.scss';
 import { completeFirstStep } from '../components/FirstFormPage/actions/firstFormPage.actions';
 import { completeSecondStep } from '../components/SecondFormPage/actions/secondFormPage.actions';
+import styles from '../styles/Home.module.scss';
 
 const Home = () => {
   const router = useRouter();

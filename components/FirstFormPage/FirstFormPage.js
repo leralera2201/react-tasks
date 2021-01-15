@@ -4,12 +4,13 @@ import { Field, reduxForm } from 'redux-form';
 import { Button, FormGroup, Label } from 'reactstrap';
 
 import validate from '../../utils/validate'
-import { renderTextFieldWithError } from '../../utils/renderField';
 
 import TabContainer from '../TabContainer';
+import TextFieldWithError from '../TextFieldWithError';
+
 import { firstStepIsCompletedSelector } from './selectors/firstFormPage.selectors';
 
-const FirstFormPage = ({ handleSubmit }) => {
+const FirstFormPage = ({ handleSubmit, invalid }) => {
   const isCompleted = useSelector(firstStepIsCompletedSelector);
   return (
     <TabContainer step={1} title="Signup">
@@ -19,7 +20,7 @@ const FirstFormPage = ({ handleSubmit }) => {
             <Label htmlFor="email" className="label">Email</Label>
             <Field
               name="email"
-              component={renderTextFieldWithError}
+              component={TextFieldWithError}
               type="email"
               id="email"
               placeholder="Enter email"
@@ -30,7 +31,7 @@ const FirstFormPage = ({ handleSubmit }) => {
             <Label for="password" className="label">Password</Label>
             <Field
               name="password"
-              component={renderTextFieldWithError}
+              component={TextFieldWithError}
               type="password"
               id="password"
               placeholder="Enter password"
@@ -41,7 +42,7 @@ const FirstFormPage = ({ handleSubmit }) => {
             <Label for="password_confirmation" className="label">Confirm Password</Label>
             <Field
               name="password_confirmation"
-              component={renderTextFieldWithError}
+              component={TextFieldWithError}
               type="password"
               id="password_confirmation"
               placeholder="Password confirmation"
@@ -54,6 +55,7 @@ const FirstFormPage = ({ handleSubmit }) => {
             outline
             color="info"
             type="submit"
+            disabled={invalid}
           >
             Next
           </Button>
